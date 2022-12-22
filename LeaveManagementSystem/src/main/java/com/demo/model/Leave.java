@@ -14,6 +14,22 @@ public class Leave {
 	private int days;
 	@ManyToOne
 	Employee employee;
+	
+	@ManyToOne
+	Manager manager;
+	
+	public Manager getManager() {
+		return manager;
+	}
+	public void setManager(Manager manager) {
+		this.manager = manager;
+	}
+	public String getReason() {
+		return reason;
+	}
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
 	private String reason;
 	
 	public int getLid() {

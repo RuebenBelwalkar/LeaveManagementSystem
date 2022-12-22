@@ -3,16 +3,21 @@ package com.demo.service;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.demo.model.Employee;
 import com.demo.repositories.EmployeeRepository;
-
+import com.demo.repositories.ManagerRepository;
+@Component
 public class HomeService {
 	@Autowired
 	EmployeeRepository erep;
 	
 	@Autowired
-	HomeService hs;
+	ManagerRepository mrep;
+	
+//	@Autowired
+//	HomeService hs;
 	
 	public Employee add(Employee employee) {
 		erep.save(employee);
@@ -26,7 +31,8 @@ public class HomeService {
 		emp.setLeaves(30);
 		emp.setStatus("Active");
 		emp.setPendingLeave(30);
-		
+		emp.setManager(mrep.findByRoleAndDepartment("Manager", emp.getDepartment()));
+		return emp;
 		
 	}
 	

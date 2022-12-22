@@ -1,5 +1,7 @@
 package com.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +19,10 @@ public class HomeController {
 	EmployeeRepository erep;
 	@Autowired
 	HomeService hs;
-	@RequestMapping("/")
-	public String home() {
-		return "login";
-	}
+//	@RequestMapping("/")
+//	public String home() {
+//		return "login";
+//	}
 	
 	@RequestMapping("/login")
 	public ModelAndView login(@RequestParam("username") String username,@RequestParam("password")String password) {
@@ -48,6 +50,25 @@ public class HomeController {
 	
 	@RequestMapping("/add")
 	public ModelAndView add(Model model ,Employee employee) {
+		Employee emp =hs.add(employee);
+		erep.save(emp);
+		ModelAndView mv =new ModelAndView();
+		mv.setViewName("ManagerDashboard");
+		List<Employee> employees =erep.findByStatus("Active");
+		mv.addObject("employee", employees);
+		return mv;
 		
+	}
+	
+	@RequestMapping("/delete")
+	public ModelAndView delete(@RequestParam("id") long id) {
+		Employee employee =erep.findById(id);
+		employee.setStatus("Inactive");
+		erep.save(employee);
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("ManagerDashboard");
+		List<Employee> employees =erep.findByStatus("Active");
+		mv.addObject("employee", employees);
+		return mv;
 	}
 }
