@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -17,7 +18,6 @@ public class Manager {
 	private String age;
 	private String Address;
 	private String state;
-	private String country;
 	private String designation;
 	private String department;
 	private String role;
@@ -33,6 +33,19 @@ public class Manager {
 	
 	@OneToMany(mappedBy = "manager")
 	private List<Employee> employee;
+	
+	@ManyToOne
+	private Admin admin;
+	
+	
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
 
 	public int getId() {
 		return id;
@@ -74,13 +87,7 @@ public class Manager {
 		this.state = state;
 	}
 
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
+	
 
 	public String getDesignation() {
 		return designation;
@@ -181,7 +188,7 @@ public class Manager {
 	@Override
 	public String toString() {
 		return "Manager [id=" + id + ", name=" + name + ", age=" + age + ", Address=" + Address + ", state=" + state
-				+ ", country=" + country + ", designation=" + designation + ", department=" + department + ", role="
+				+  ", designation=" + designation + ", department=" + department + ", role="
 				+ role + ", mobileNumber=" + mobileNumber + ", email=" + email + ", status=" + status + ", leaves="
 				+ leaves + ", pendingLeave=" + pendingLeave + ", username=" + username + ", password=" + password
 				+ ", totalLeave=" + totalLeave + ", employee=" + employee + "]";

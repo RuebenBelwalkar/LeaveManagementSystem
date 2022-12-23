@@ -11,10 +11,11 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 	Employee findById(long id);
 	Employee findByRole(String role);
 	Employee findByDepartmentAndDesignation(String department,String Designation);
-	List<Employee> findByStatus(String status);
+	List<Employee> findByStatusAndDepartment(String status,String department);
 	Employee findByUsernameAndPassword(String username,String password);
 	@Query(value="select max(id) from employee" ,nativeQuery = true)
 	long findByMaxId();
+	List<Employee> findByDepartment(String department);
 	
 	
 }

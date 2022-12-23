@@ -10,16 +10,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.DynamicUpdate;
-
 @Entity
 @DynamicUpdate
-public class Employee {
+public class Admin {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
 	private String age;
-	private String Address;
+	private String address;
 	private String state;
 	private String designation;
 	private String department;
@@ -34,17 +33,18 @@ public class Employee {
 	@OneToMany(mappedBy = "employee")
 	private List<Leave> totalLeave;
 	
-	@ManyToOne
-	Manager manager;
+	@OneToMany
+	List<Manager> manager;
 	
 	
 	
 	
 	
-	public Manager getManager() {
+	
+	public List<Manager> getManager() {
 		return manager;
 	}
-	public void setManager(Manager manager) {
+	public void setManager(List<Manager> manager) {
 		this.manager = manager;
 	}
 	public int getLeaves() {
@@ -84,10 +84,10 @@ public class Employee {
 		this.age = age;
 	}
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 	public String getState() {
 		return state;
@@ -147,16 +147,12 @@ public class Employee {
 	}
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", age=" + age + ", Address=" + Address + ", state=" + state
-				+  ", designation=" + designation + ", department=" + department + ", role="
-				+ role + ", mobileNumber=" + mobileNumber + ", email=" + email + ", status=" + status + ", leaves="
-				+ leaves + ", pendingLeave=" + pendingLeave + ", username=" + username + ", password=" + password
-				+ ", totalLeave=" + totalLeave + "]";
+		return "Admin [id=" + id + ", name=" + name + ", age=" + age + ", address=" + address + ", state=" + state
+				+ ", designation=" + designation + ", department=" + department + ", role=" + role + ", mobileNumber="
+				+ mobileNumber + ", email=" + email + ", status=" + status + ", leaves=" + leaves + ", pendingLeave="
+				+ pendingLeave + ", username=" + username + ", password=" + password + ", totalLeave=" + totalLeave
+				+ ", manager=" + manager + "]";
 	}
-	
-	
-	
-	
-	
+
 	
 }

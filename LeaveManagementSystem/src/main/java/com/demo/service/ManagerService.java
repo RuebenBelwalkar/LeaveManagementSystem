@@ -9,7 +9,7 @@ import com.demo.model.Employee;
 import com.demo.repositories.EmployeeRepository;
 import com.demo.repositories.ManagerRepository;
 @Component
-public class HomeService {
+public class ManagerService {
 	@Autowired
 	EmployeeRepository erep;
 	
