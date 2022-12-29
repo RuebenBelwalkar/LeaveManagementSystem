@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.demo.model.Admin;
 
 public interface AdminRepository extends JpaRepository<Admin, Integer> {
-	Admin findById(long id);
-	Admin findByusernameAndPassword(String username,String password);
+	Admin findById(int id);
+	Admin findByUsernameAndPassword(String username,String password);
 	
 }

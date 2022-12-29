@@ -1,13 +1,13 @@
 package com.demo.model;
 
-import java.util.List;
 
+
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -19,46 +19,20 @@ public class Employee {
 	private int id;
 	private String name;
 	private String age;
-	private String Address;
+	private String address;
 	private String state;
 	private String designation;
 	private String department;
-	private String role;
 	private long mobileNumber;
 	private String email;
+	//Should be generated.
 	private String status;
-	private int leaves;
-	private int pendingLeave;
+	@Embedded
+	private LeaveType leaveType;
 	private String username;
 	private String password;
-	@OneToMany(mappedBy = "employee")
-	private List<Leave> totalLeave;
+	private String managerName;
 	
-	@ManyToOne
-	Manager manager;
-	
-	
-	
-	
-	
-	public Manager getManager() {
-		return manager;
-	}
-	public void setManager(Manager manager) {
-		this.manager = manager;
-	}
-	public int getLeaves() {
-		return leaves;
-	}
-	public void setLeaves(int leaves) {
-		this.leaves = leaves;
-	}
-	public int getPendingLeave() {
-		return pendingLeave;
-	}
-	public void setPendingLeave(int pendingLeave) {
-		this.pendingLeave = pendingLeave;
-	}
 	public String getStatus() {
 		return status;
 	}
@@ -84,10 +58,10 @@ public class Employee {
 		this.age = age;
 	}
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 	public String getState() {
 		return state;
@@ -108,12 +82,7 @@ public class Employee {
 	public void setDepartment(String department) {
 		this.department = department;
 	}
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
-	}
+
 	public long getMobileNumber() {
 		return mobileNumber;
 	}
@@ -139,20 +108,29 @@ public class Employee {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public List<Leave> getTotalLeave() {
-		return totalLeave;
+	
+	public LeaveType getLeaveType() {
+		return leaveType;
 	}
-	public void setTotalLeave(List<Leave> totalLeave) {
-		this.totalLeave = totalLeave;
+	public void setLeaveType(LeaveType leaveType) {
+		this.leaveType = leaveType;
+	}
+	public String getManagerName() {
+		return managerName;
+	}
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
 	}
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", age=" + age + ", Address=" + Address + ", state=" + state
-				+  ", designation=" + designation + ", department=" + department + ", role="
-				+ role + ", mobileNumber=" + mobileNumber + ", email=" + email + ", status=" + status + ", leaves="
-				+ leaves + ", pendingLeave=" + pendingLeave + ", username=" + username + ", password=" + password
-				+ ", totalLeave=" + totalLeave + "]";
+		return "Employee [id=" + id + ", name=" + name + ", age=" + age + ", address=" + address + ", state=" + state
+				+ ", designation=" + designation + ", department=" + department + ", mobileNumber=" + mobileNumber
+				+ ", email=" + email + ", status=" + status + ", leaveType=" + leaveType + ", username=" + username
+				+ ", password=" + password + ", managerName=" + managerName + "]";
 	}
+	
+
+	
 	
 	
 	

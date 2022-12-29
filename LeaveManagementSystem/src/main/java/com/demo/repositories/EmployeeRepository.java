@@ -9,7 +9,7 @@ import com.demo.model.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 	Employee findById(long id);
-	Employee findByRole(String role);
+	
 	Employee findByDepartmentAndDesignation(String department,String Designation);
 	List<Employee> findByStatusAndDepartment(String status,String department);
 	Employee findByUsernameAndPassword(String username,String password);
