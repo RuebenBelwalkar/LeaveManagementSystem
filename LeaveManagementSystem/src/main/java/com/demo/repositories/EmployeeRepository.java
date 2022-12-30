@@ -8,14 +8,14 @@ import org.springframework.data.jpa.repository.Query;
 import com.demo.model.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
-	Employee findById(long id);
+	Employee findById(int id);
 	
 	Employee findByDepartmentAndDesignation(String department,String Designation);
 	List<Employee> findByStatusAndDepartment(String status,String department);
 	Employee findByUsernameAndPassword(String username,String password);
 	@Query(value="select max(id) from employee" ,nativeQuery = true)
-	long findByMaxId();
+	int findByMaxId();
 	List<Employee> findByDepartment(String department);
-	
+	List<Employee> findByDesignation(String designation);
 	
 }

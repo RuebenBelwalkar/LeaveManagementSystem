@@ -85,7 +85,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="AdmiViewEmployee?id=<c:out value="${admin.id }"/>"" class="nav-link px-0 mt-2 align-middle">
+                                    <a href="AdmiViewEmployee?id=<c:out value="${admin.id }"/>" class="nav-link px-0 mt-2 align-middle">
                                         <i class="fa-solid fa-users"></i> <span
                                             class="ms-1 d-none d-sm-inline text-dark">View
                                             Employees</span></a>

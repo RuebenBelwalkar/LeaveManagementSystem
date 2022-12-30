@@ -1,5 +1,7 @@
 package com.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,8 +9,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.demo.model.Admin;
+import com.demo.model.Employee;
+import com.demo.model.Leaves;
 import com.demo.repositories.AdminRepository;
 import com.demo.repositories.EmployeeRepository;
+import com.demo.repositories.LeavesRepository;
 
 @Controller
 public class AdminRedirectController {
@@ -16,6 +21,8 @@ public class AdminRedirectController {
 	EmployeeRepository erep;
 	@Autowired
 	AdminRepository arep;
+	@Autowired
+	LeavesRepository lrep;
 	
 	@RequestMapping("/AdminAddEmployee")
 	public ModelAndView rAdd(@RequestParam("id") int id) {
@@ -25,6 +32,8 @@ public class AdminRedirectController {
 		Admin admin = arep.findById(id);
 		mv.setViewName("AdminAddEmployee");
 		mv.addObject("admin", admin);
+		List<Employee> employee=erep.findByDesignation("Manager");
+		mv.addObject("employees", employee);
 		return mv;
 	}
 	
@@ -60,6 +69,8 @@ public class AdminRedirectController {
 		ModelAndView mv =new ModelAndView();
 		System.out.println(id);
 		Admin admin = arep.findById(id);
+		List<Leaves> leaves = lrep.findByEmpDesignationAndStatus("Manager","Pending");
+		mv.addObject("leaves", leaves);
 		mv.setViewName("AdminManageLeave");
 		mv.addObject("admin", admin);
 		return mv;
@@ -69,8 +80,20 @@ public class AdminRedirectController {
 		ModelAndView mv =new ModelAndView();
 		System.out.println(id);
 		Admin admin = arep.findById(id);
+		List<Employee> employee=erep.findByDesignation("Manager");
+		mv.addObject("employees", employee);
 		mv.setViewName("AdminViewEmployee");
-		mv.addObject("admin", admin);
+		mv.addObject("admin", admin);	
+		return mv;
+	}
+	
+	@RequestMapping("/AdminUpdateEmployee")
+	public ModelAndView adminUpdatwEmployee(@RequestParam("id") int id) {
+		ModelAndView mv =new ModelAndView();
+		System.out.println(id);
+		Employee employee = erep.findById(id);
+		mv.setViewName("AdminUpdateEmployee");
+		mv.addObject("employee", employee);	
 		return mv;
 	}
 	

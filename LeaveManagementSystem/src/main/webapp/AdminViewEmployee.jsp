@@ -117,19 +117,19 @@
 
                     <c:forEach items="${employees }" var="emp">
                         <tr>
-                            <td>$emp.id}</td>
-                            <td>$emp.name}</td>
-                            <td>$emp.username}</td>
-                            <td>$emp.designation}</td>
-                            <td>$emp.dept}</td>
-                            <td>$emp.email}</td>
-                            <td>${emp.mobilenumber }</td>
+                            <td>${emp.id}</td>
+                            <td>${emp.name}</td>
+                            <td>${emp.username}</td>
+                            <td>${emp.designation}</td>
+                            <td>${emp.department}</td>
+                            <td>${emp.email}</td>
+                            <td>${emp.mobileNumber }</td>
 
 
 
-                            <td><a class="action-edit" href="./AdminUpdateEmp.html"><i
-                                        class="fa-solid fa-user-pen"></i></a>&nbsp;&nbsp;<a> <a class="action-edit"
-                                        href="delete?id=<c:out value='${employee.id }'/>" onclick="return check()"><i
+                            <td><a class="action-edit" href="AdminUpdateEmployee?id=<c:out value="${emp.id }"/>"><i
+                                        class="fa-solid fa-user-pen"></i></a>&nbsp;&nbsp; <a class="action-edit"
+                                        href="AdminDeleteEmployee?id=<c:out value='${emp.id }'/>" onclick="return check()"><i
                                             class="fa-solid fa-trash"></i></a>&nbsp;&nbsp;<a></td>
 
                         </tr>

@@ -7,7 +7,7 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Add Employee</title>
+      <title>UpdateEmployee</title>
 
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -24,7 +24,7 @@
 
           <div class="col-8">
 
-            <img src="/imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-1" style="width: 13%;">
+            <img src="./imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-1" style="width: 13%;">
           </div>
           <div class="collapse navbar-collapse ms-5 text-end">
 
@@ -32,9 +32,9 @@
               Welcome ${admin.name}
             </form>
             <div class="dropdown ms-4">
-              <a href="#" class="d-flex  align-items-center text-dark text-decoration-none dropdown-toggle"
+              <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle"
                 id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="/imges/profilelogo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                <img src="./imges/profilelogo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
                 <span class="d-none d-sm-inline mx-1">Profile</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
@@ -58,38 +58,38 @@
               </a>
               <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                 <li>
-                  <a href="AdminDashboard?id=<c:out value="${admin.id }"/>" class="nav-link align-middle px-0">
+                  <a href="AdminDashboard?id=<c:out value="${employee.admin.id }"/>" class="nav-link align-middle px-0">
                     <i class="fa-solid fa-house"></i> <span class="ms-2 d-none d-sm-inline text-dark">Home</span>
                   </a>
                 </li>
 
                 <li>
-                  <a href="AdminViewEmployee?id=<c:out value="${admin.id }"/>" class="nav-link px-0 mt-2 align-middle">
+                  <a href="AdminViewEmployee?id=<c:out value="${employee.admin.id }"/>" class="nav-link px-0 mt-2 align-middle">
                     <i class="fa-solid fa-users"></i> <span class="ms-1 d-none d-sm-inline text-dark">View
                       Employees</span></a>
                 </li>
 
                 <li>
-                  <a href="" class="nav-link px-0 mt-2 align-middle">
-                    <i class="fa-solid fa-user-plus"></i> <span class="ms-1 d-none d-sm-inline text-primary">Add
+                  <a href="AdminAddEmployee?id=<c:out value="${employee.admin.id }"/>" class="nav-link px-0 mt-2 align-middle">
+                    <i class="fa-solid fa-user-plus"></i> <span class="ms-1 d-none d-sm-inline text-dark">Add
                       Employee</span> </a>
                 </li>
 
                 <li>
-                  <a href="AdminManageLeave?id=<c:out value="${admin.id }"/>" class="nav-link px-0 mt-2 align-middle">
+                  <a href="AdminManageLeave?id=<c:out value="${employee.admin.id }"/>" class="nav-link px-0 mt-2 align-middle">
                     <i class="fa-solid fa-calendar-days"></i> <span class="ms-2 d-none d-sm-inline text-dark">Manage
                       Leave</span> </a>
                 </li>
 
                 <li>
-                  <a href="AdminAddHoliday?id=<c:out value="${admin.id }"/>" class="nav-link px-0 mt-2 align-middle">
+                  <a href="AdminAddHoliday?id=<c:out value="${employee.admin.id }"/>" class="nav-link px-0 mt-2 align-middle">
                     <i class="fa-solid fa-mug-hot"></i> <span class="ms-2 d-none d-sm-inline text-dark">Add
                       Holiday</span></a>
                 </li>
 
 
                 <li>
-                  <a href="AdminAddProject?id=<c:out value="${admin.id }"/>" class="nav-link px-0 mt-2 align-middle">
+                  <a href="AdminAddProject?id=<c:out value="${employee.admin.id }"/>" class="nav-link px-0 mt-2 align-middle">
                     <i class="fa-solid fa-folder-plus"></i> <span class="ms-2 d-none d-sm-inline text-dark">Add
                       Project</span></a>
                 </li>
@@ -99,84 +99,78 @@
             </div>
           </div>
 
-          <div class="col-md-7 col-xl-9 col-8 mt-3 ">
-            <form action="addEmployee" class="row  ms-5" onsubmit="return validation()">
-              <span class="text-success"><h3>${success}</h3></span>
-              <h3 class="mb-5 mt-4">Add Employee</h3>
-              <div class="col-xl-6  col-md-6 col-12 mt-2">
+          <div class="col-md-9 col-xl-9 px-sm-7 col-9 mt-2 ">
+            <form action="updateEmployee"  class="row  ms-5" onsubmit="return validation()">
+                 <span class="text-success"><h3>${success}</h3></span>
+              <h3 class="mb-5 mt-4">Update Employee</h3>
+              <div class="col-xl-6 col-md-6 col-12 mt-2">
+                <label class="form-label fw-bold ">ID</label>
+                <input type="number" value="${employee.id }" id="id" name="id" class="form-control border-top-0 border-start-0 border-end-0"
+                  readonly="">
+              </div>
+              <div class="col-xl-6  col-md-6 col-12 mt-3">
                 <label class="form-label fw-bold ">Name</label>
-                <input type="text" id="name" name="name"
+                <input type="text" value="${employee.name }" id="name" name="name"
                   class="form-control border-top-0 border-start-0 border-end-0" />
                 <span id="nameerror"></span>
               </div>
-              <div class="col-xl-6 col-md-6 col-12 mt-2">
+              <div class="col-xl-6 col-md-6 col-12 mt-3">
+                <label class="form-label fw-bold ">User Name</label>
+                <input type="text" id="username" name="username" value="${employee.username }"
+                  class="form-control border-top-0 border-start-0 border-end-0" readonly="">
+              </div>
+              <div class="col-xl-6 col-md-6 col-12 mt-3">
                 <label class="form-label fw-bold ">Email</label>
-                <input type="email" id="email" name="email"
+                <input type="email" id="email" name="email" value="${employee.email }"
                   class="form-control border-top-0 border-start-0 border-end-0">
                 <span id="emailerror"></span>
               </div>
               <div class="col-xl-6 col-md-6 col-12 mt-3">
                 <label class="form-label fw-bold ">Date Of Birth</label>
-                <input type="date" id="dob" name="dob" class="form-control border-top-0 border-start-0 border-end-0">
+                <input type="date" id="dob" name="dob" value="${employee.dob }" class="form-control border-top-0 border-start-0 border-end-0">
                 <span id="doberror"></span>
               </div>
               <div class="col-xl-6 col-md-6 col-12 mt-3">
                 <label class="form-label fw-bold ">Phone Number</label>
-                <input type="number" id="number" name="mobileNumber"
+                <input type="number" id="number" name="mobileNumber" value="${employee.mobileNumber }"
                   class="form-control border-top-0 border-start-0 border-end-0">
                 <span id="numbererror"></span>
               </div>
               <div class="col-xl-6 col-md-6 col-12 mt-3">
                 <label class=" fw-bold mb-3">Gender</label> <br>
-                <input type="radio" name="gender" id="gender" value="male"> <label for="">Male</label>
-                <input type="radio" name="gender" id="gender" value="female" required> <label for="">Female</label>
+                <input type="radio" name="gender" id="gender" value="Male"  ${employee.gender=='male'?'checked':''}> <label for="">Male</label>
+                <input type="radio" name="gender" id="gender" value="Female"  ${emp.gender=='female'?'checked':''} required> <label for="">Female</label>
                 <span id="gendererror"></span>
               </div>
-              <div class="col-xl-6 col-md-6 col-12 mt-3">
-                <label class="form-label fw-bold ">Joining Date</label>
-                <input type="date" id="jdate" name="joiningDate"
-                  class="form-control border-top-0 border-start-0 border-end-0">
-                <span id="jdateerror"></span>
-              </div>
+
               <div class="col-xl-6 col-md-6 col-12 mt-3">
                 <label class="form-label fw-bold ">Designation</label>
-                <select name="designation" id="designation" class="form-select border-top-0 border-start-0 border-end-0"
-                  required>
-                  <option selected disabled value="">Choose designation</option>
+                <select name="designation"  id="designation" class="form-select border-top-0 border-start-0 border-end-0"
+                  sreadonly="">
+                  <option selected  value="${employee.designation }">${employee.designation }</option>
                   <option value="Trainee">Trainee </option>
                   <option value="Associate">Associate</option>
-                  <option value="Manager">Manager</option>
+                  <option value="Deputy Manager">Deputy Manager</option>
                   <option value="Team Lead">Team Lead</option>
                 </select>
-                <span id="designationerror"></span>
               </div>
               <div class="col-xl-6 col-md-6 col-12 mt-3">
                 <label class="form-label fw-bold ">Department</label>
-                <select id="department" name="department" class="form-select border-top-0 border-start-0 border-end-0"
-                  required>
-                  <option selected disabled value="">Choose Department</option>
-                  <option value="HR">HR</option>
-                  <option value="Finance">Finance</option>
-                  <option value="IT">IT</option>
-                </select>
+                <input type="text" id="department" name="department" value="${employee.department }"
+                  class="form-control border-top-0 border-start-0 border-end-0" readonly="">
+                <span id="numbererror"></span>
               </div>
-              <div></div>
-              <div class="col-xl-6 col-md-6 col-12 mt-3">
-                <label class="form-label fw-bold ">Choose Manager</label>
-                <select id="mname" name="managerName" class="form-select border-top-0 border-start-0 border-end-0"
-                  >
-                  <option selected disabled value="">Choose Manager</option>
-                  
-                   <c:forEach items="${employees }" var="emp">
-                  <option value="${emp.name }">${emp.name}</option>
-                      </c:forEach>
-                </select>
+
+              <div class="col-xl-6  col-md-6 col-12 mt-3">
+                <label class="form-label fw-bold ">Manager Name</label>
+                <input type="text" id="managername" name="managerName" value="${employee.managerName }"
+                  class="form-control border-top-0 border-start-0 border-end-0" readonly />
               </div>
 
               <div class="col-12 mt-3">
                 <label class="form-label fw-bold ">State</label>
                 <select id="state" name="state" class="form-select border-top-0 border-start-0 border-end-0" required>
-                  <option selected disabled value="">Choose State</option>
+                  <option selected  value="${employee.state }">${employee.state }</option>
                   <option value="Andhra Pradesh">Andhra Pradesh</option>
                   <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                   <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -218,15 +212,25 @@
 
               <div class="col-12 mt-3">
                 <div> <label class="form-label fw-bold ">Address</label></div>
-                <textarea name="address" id="address" cols="60" rows="2"
-                  class="form-control border-top-0 border-start-0 border-end-0"></textarea>
+                <textarea name="address" id="address" cols="60" rows="2" 
+                  class="form-control border-top-0 border-start-0 border-end-0">${employee.address }</textarea>
                 <span id="addresserror"></span>
               </div>
-				<input type="hidden" name="aid" value="${admin.id }">
+				 <input type="text" name="status" value="${employee.status }">
+				<input type="text" name="password" value="${employee.password }">
+				<input type="text" name="sickLeave" value="${employee.sickLeave }">
+				<input type="text" name="casualLeave" value="${employee.casualLeave }">
+				<input type="text" name="personalLeave" value="${employee.personalLeave }">
+				<input type="text" name="maternityLeave" value="${employee.maternityLeave }">
+				<input type="text" name="paternityLeave" value="${employee.paternityLeave }">
+				<input type="text" name="marriageLeave" value="${employee.marriageLeave }">
+				 <input type="text" name="adoptionLeave" value="${employee.adoptionLeave }">
+ 				<input type="text" name="employee.admin.id" value="${employee.admin.id }"> 
+ 					<input type="text" name="joiningDate" value="${employee.joiningDate }">
+
               <div class="col-12 mt-4 mb-4 text-center">
                 <button type="submit"  class="btn btn-primary  fw-bold  w-50">Submit</button>
               </div>
-            
             </form>
           </div>
 
@@ -267,7 +271,7 @@
             return false;
           }
           else {
-            this.regex = /^[A-Za-z. ]{3,20}$/;
+            this.regex = /^[A-Za-z. ]{3,10}$/;
             if (!this.regex.test(this.name)) {
               document.getElementById('nameerror').innerHTML = "*Enter valid name"
               document.getElementById('nameerror').style.color = "red"
@@ -323,7 +327,7 @@
             return false;
           }
           else {
-            document.getElementById("jdateerror").innerHTML = "";
+            document.getElementById("doberror").innerHTML = "";
           }
           if (this.number == "") {
             document.getElementById('numbererror').innerHTML = "*Enter Phone Number"

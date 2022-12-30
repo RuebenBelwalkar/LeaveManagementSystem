@@ -110,29 +110,35 @@
                     <div class="col-md-7 col-xl-9 col-8 mt-4 ms-5">
                         <table id="table" class="table table-border table-hover mt-4">
                             <tr>
-                                <th> ID</th>
+                                <th>Leave ID</th>
+                                   <th>Employee ID</th>
                                 <th> Name</th>
                                 <th> From</th>
                                 <th>To</th>
+                                 <th>Days</th>
                                 <th>Leave Type</th>
+                                 <th>Reason</th>
                                 <th>Action</th>
 
                             </tr>
 
-                            <c:forEach items="${employees }" var="emp">
+                            <c:forEach items="${leaves}" var="leave">
                                 <tr>
-                                    <td>$emp.id}</td>
-                                    <td>$emp.name}</td>
-                                    <td>$emp.fromdate}</td>
-                                    <td>$emp.toDate}</td>
-                                    <td>$emp.leavetype}</td>
+                                    <td>${leave.lid}</td>
+                                    <td>${leave.empId}</td>
+                                    <td>${leave.empName}</td>
+                                    <td>${leave.startDate}</td>
+                                    <td>${leave.endDate}</td>
+                                      <td>${leave.days}</td>
+                                        <td>${leave.leaveType}</td>
+                                          <td>${leave.reason}</td>
 
 
 
 
-                                    <td><a class="action-edit" href="edit?id=c:out value='${employee.id }'/>">
-                                            <i class="fa-solid fa-xmark"></i></a>&nbsp;&nbsp;<a> <a class="action-edit"
-                                                href="delete?id=c:out value='${employee.id }'/>"
+                                    <td><a class="action-edit" href="reject?lid=<c:out value='${leave.lid }'/>">
+                                            <i class="fa-solid fa-xmark"></i></a>&nbsp;&nbsp; <a class="action-edit"
+                                                href="accept?lid=<c:out value='${leave.lid }'/>"
                                                 onclick="return check()"><i
                                                     class="fa-solid fa-check"></i></a>&nbsp;&nbsp;<a>
 

@@ -137,7 +137,7 @@
                                     <!-- <input type="text" class="form-control" id="inputName" name="name" value="${employee.name}"
                             readonly /> -->
                                     <textarea class="form-control border-top-0 border-start-0 border-end-0"
-                                        id="inputName" name="name" id="pdesc" cols="30" rows="5" required></textarea>
+                                         name="name" id="pdesc" cols="30" rows="5" ></textarea>
                                 </div>
                                 <span id="descerror">
 
@@ -150,7 +150,7 @@
                                         <label class="form-label fw-bold">Department</label>
                                         <div class="d-flex flex-row justify-content-between align-items-center">
                                             <select class="form-select border-top-0 border-start-0 border-end-0 "
-                                                id="inputStartTimeHour" name="department" required>
+                                                id="dept" name="department" required>
                                                 <option value="" disabled selected>Choose Department</option>
                                                 <option value="08">IT</option>
                                                 <option value="09">Finance</option>
@@ -158,13 +158,15 @@
                                             </select>
 
                                         </div>
+                                        <span id="depterror">
+                                        </span>
                                     </div>
 
                                     <div class="form-group col-md-6 mt-2">
                                         <label class="form-label fw-bold">Manager Name</label>
                                         <div class="d-flex flex-row justify-content-between align-items-center">
                                             <select class="form-select border-top-0 border-start-0 border-end-0 "
-                                                id="inputStartTimeHour" name="department" required>
+                                                id="mname" name="department" required>
                                                 <option value="" disabled selected>Choose Manager</option>
                                                 <option value="08">IT</option>
                                                 <option value="09">Finance</option>
@@ -172,6 +174,8 @@
                                             </select>
 
                                         </div>
+                                        <span id="mnameerror">
+                                        </span>
                                     </div>
 
                                 </div>
@@ -223,15 +227,16 @@
 
                     function validate() {
                         this.name = document.getElementById('pname').value
+                        this.desc = document.getElementById('pdesc').value
 
-                        if (this.name == "") {
+                        if (name == "") {
                             document.getElementById('pnameerror').innerHTML = "*Enter Project name"
                             document.getElementById('pnameerror').style.color = "red"
                             document.getElementById('pname').focus()
                             return false;
                         }
                         else {
-                            this.regex = /^[A-Za-z. ]{3,10}$/
+                            this.regex = /^[A-Za-z. ]{3,30}$/
                             if (!this.regex.test(name)) {
                                 document.getElementById('pnameerror').innerHTML = "*Enter valid Project name"
                                 document.getElementById('pnameerror').style.color = "red"
@@ -243,6 +248,26 @@
                             }
 
                         }
+                        if (this.desc == "") {
+                            document.getElementById('descerror').innerHTML = "*Enter Project name"
+                            document.getElementById('descerror').style.color = "red"
+                            document.getElementById('pdesc').focus()
+                            return false;
+                        }
+                        else {
+                            this.regex = /^[A-Za-z. ]{3,30}$/
+                            if (!this.regex.test(this.desc)) {
+                                document.getElementById('descerror').innerHTML = "*Enter valid Project name"
+                                document.getElementById('descerror').style.color = "red"
+                                document.getElementById('pdesc').focus()
+                                return false;
+                            }
+                            else {
+                                document.getElementById('pnameerror').innerHTML = ""
+                            }
+
+                        }
+
 
                     }
                     $(function () {

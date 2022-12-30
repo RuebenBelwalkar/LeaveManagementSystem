@@ -13,21 +13,7 @@ public class ManagerService {
 	EmployeeRepository erep;
 	
 	
-	public Employee add(Employee employee) {
-		erep.save(employee);
-		Employee emp=erep.findById(erep.findByMaxId());
-		String name=emp.getName();
-		long id=emp.getId();
-		emp.setUsername(name+id);
-		Random random =new Random();
-		int num =random.nextInt(1000);
-		emp.setPassword(name+num);
-		
-		emp.setStatus("Active");
-		
-		return emp;
-		
-	}
+	
 	
 
 	

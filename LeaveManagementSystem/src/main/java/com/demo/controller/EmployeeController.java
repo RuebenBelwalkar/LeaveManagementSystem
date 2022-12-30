@@ -43,12 +43,13 @@ public class EmployeeController {
 		ModelAndView mv=new ModelAndView();
 		Employee employee =erep.findByUsernameAndPassword(username, password);
 		Admin admin = arep.findByUsernameAndPassword(username, password);
+		String manager="Manager";
 	//	String designation=employee.getDesignation();
 		if(admin!=null) {
 			mv.setViewName("AdminDashboard");
 			mv.addObject("admin", admin);
 			return mv;
-		}else if(employee!=null && employee.getDesignation()=="Manager") {	
+		}else if(employee!=null && employee.getDesignation().equals(manager)) {	
 			mv.setViewName("ManagerDashboard");
 			mv.addObject("employee", employee);
 			return mv;
@@ -58,36 +59,15 @@ public class EmployeeController {
 			return mv;
 		}
 		else {
-			String msg="Fail";
+			String error="Invalid Username or Password.";
 			mv.setViewName("login");
-			mv.addObject("fail", msg);
+			mv.addObject("error", error);
 			return mv;
 		}
 
 		}
 	
 	
-	@RequestMapping("/addEmployee")
-	public ModelAndView add(Model model ,Employee employee) {
-		Employee emp =hs.add(employee);
-		erep.save(emp);
-		ModelAndView mv =new ModelAndView();
-		mv.setViewName("ManagerDashboard");
-		List<Employee> employees =erep.findByStatusAndDepartment("Active",emp.getDepartment());
-		mv.addObject("employee", employees);
-		return mv;
-		
-	}
+
 	
-	@RequestMapping("/deleteEmployee")
-	public ModelAndView delete(@RequestParam("id") long id) {
-		Employee employee =erep.findById(id);
-		employee.setStatus("Inactive");
-		erep.save(employee);
-		ModelAndView mv=new ModelAndView();
-		mv.setViewName("ManagerDashboard");
-		List<Employee> employees =erep.findByStatusAndDepartment("Active",employee.getDepartment());
-		mv.addObject("employee", employees);
-		return mv;
-	}
 }

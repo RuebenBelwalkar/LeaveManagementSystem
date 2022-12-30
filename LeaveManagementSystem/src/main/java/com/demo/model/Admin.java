@@ -1,10 +1,13 @@
 package com.demo.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.DynamicUpdate;
 @Entity
@@ -22,8 +25,9 @@ public class Admin {
 	private String email;
 	private String username;
 	private String password;
-	
-	public int getId() {
+@OneToMany(mappedBy = "admin")
+	List<Employee> employee;
+ 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
@@ -87,6 +91,14 @@ public class Admin {
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+	
+	
+	public List<Employee> getEmployee() {
+		return employee;
+	}
+	public void setEmployee(List<Employee> employee) {
+		this.employee = employee;
 	}
 	@Override
 	public String toString() {
