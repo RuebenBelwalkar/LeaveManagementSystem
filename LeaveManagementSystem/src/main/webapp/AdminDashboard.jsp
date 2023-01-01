@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/global.css">
     <title>Admin Dashboard</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -18,25 +19,25 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
+    <nav class="navbar navbar-expand-lg navbar navbar-expand-sm navbar navbar-expand-md" style="background-color: rgba(0, 0, 0, 0.2);">
         <div class="container-fluid">
 
             <div class="col-8">
 
-                <img src="/imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-1" style="width: 13%;">
+                <img src="/imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-1" width="100" height="60" >
             </div>
-            <div class="collapse navbar-collapse ms-5 text-end">
+            <div class=" navbar-collapse ms-5 col-3  text-end">
 
-                <form class="d-flex ">
+                <div class="d-none d-lg-block ms-5 ">
                     Welcome ${admin.name}
-                </form>
-                <div class="dropdown ms-4">
+                </div>
+                <div class="dropdown ms-5  text-end  ps-5">
                     <a href="" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle"
                         id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="/imges/profilelogo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
                         <span class="d-none d-sm-inline mx-1">Profile</span>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small mb-0 shadow">
+                    <ul class="dropdown-menu dropdown-menu-dark me-5 text-small mb-0   shadow">
                         <li><a class="dropdown-item" href="./ResetPassword.html">Reset Password</a></li>
                         <li>
                             <hr class="dropdown-divider">

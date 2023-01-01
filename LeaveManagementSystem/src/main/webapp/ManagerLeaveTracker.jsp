@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/global.css">
     <title>manager LeaveTracker</title>
 
     <link rel="stylesheet" href="/global.css">
@@ -203,12 +204,12 @@
              </div>
         <!-------------->
                 <div class="card shadow ms-5 mt-5 md-3">
-                <table class="table table-hover">
+                <table class="table table-hover ">
                     
                     <thead>
-                         <tr>
-                            <th>Leave History</th>
-                        </tr>
+                         <td>
+                            <th align="centre" >Leave History</th>
+                        </td>
                         
                     <tr>
                         <th scope="col">Leave ID</th>
@@ -221,7 +222,7 @@
                         <th scope="col">Approval Status</th>
                     </tr>
                     </thead>
-                    <tbody>
+                   <tbody>
                         <c:forEach items="${leaves}" var="leave" >
                     <tr>
                         <td>${leave.lid}</td>

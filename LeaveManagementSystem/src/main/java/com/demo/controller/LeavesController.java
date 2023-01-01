@@ -73,4 +73,42 @@ public class LeavesController {
 		mv.addObject("leaves", leaves);
 		return mv;
 	}
+	
+	@RequestMapping("/empApplyLeave")
+	public ModelAndView empApplyLeave(Leaves leave) {
+	
+	
+	
+		
+		ModelAndView mv=new ModelAndView();
+		leave.setStatus("Pending");
+	
+		lrep.save(leave);
+		mv.setViewName("EmployeeApplyLeave");
+		Employee employee =erep.findById(leave.getEmpId());
+		mv.addObject("employee", employee);
+		String success="Leave applied Successfully";
+		mv.addObject("success", success);
+	
+		leave.setStatus("Pending");
+		lrep.save(leave);
+		return mv;
+	}
+	
+	@RequestMapping("/empaccept")
+	public ModelAndView empAccept(@RequestParam("lid") int id) {
+		System.out.println("emp accept");
+		System.out.println(id);
+		ModelAndView mv = new ModelAndView();
+		Leaves leave= lrep.findById(id);
+		leave.setStatus("Approved");
+		Employee manager= ls.empAccept(leave);
+		mv.addObject("employee", manager);
+		List<Leaves> leaves=lrep.findByManagerNameAndStatus(manager.getName(),"Pending");
+		mv.addObject("employees", manager);
+		mv.setViewName("ManagerManageLeave");
+		mv.addObject("leaves", leaves);
+		return mv;
+		
+	}
 }

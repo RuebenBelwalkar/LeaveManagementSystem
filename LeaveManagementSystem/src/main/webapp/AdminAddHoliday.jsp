@@ -7,6 +7,7 @@
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+             <link rel="stylesheet" href="/global.css">
             <title>Add Holiday</title>
 
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -111,7 +112,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="./AdminAddProject.html" class="nav-link px-0 mt-2 align-middle">
+                                    <a href="AdminAddProject?id=<c:out value="${admin.id }"/>" class="nav-link px-0 mt-2 align-middle">
                                         <i class="fa-solid fa-folder-plus"></i> <span
                                             class="ms-2 d-none d-sm-inline text-dark">Add Project</span></a>
                                 </li>

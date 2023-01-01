@@ -7,6 +7,7 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="/global.css">
       <title>Add Employee</title>
 
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -162,6 +163,17 @@
               </div>
               <div></div>
               <div class="col-xl-6 col-md-6 col-12 mt-3">
+                <label class="form-label fw-bold ">Choose Manager</label>
+                <select id="mname" name="managerName" class="form-select border-top-0 border-start-0 border-end-0"
+                  >
+                  <option selected disabled value="">Choose Manager</option>
+                  
+                   <c:forEach items="${employees }" var="emp">
+                  <option value="${emp.name }">${emp.name}</option>
+                      </c:forEach>
+                </select>
+              </div>
+               <div class="col-xl-6 col-md-6 col-12 mt-3">
                 <label class="form-label fw-bold ">Choose Manager</label>
                 <select id="mname" name="managerName" class="form-select border-top-0 border-start-0 border-end-0"
                   >

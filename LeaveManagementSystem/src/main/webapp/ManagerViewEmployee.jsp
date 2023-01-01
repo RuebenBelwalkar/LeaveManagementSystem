@@ -7,6 +7,7 @@
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+             <link rel="stylesheet" href="/global.css">
             <title>Managers Dashboard</title>
 
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -64,7 +65,7 @@
                             <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                                 id="menu">
                                 <li>
-                                    <a href="./ManagerDashboard.html" class="nav-link align-middle px-0">
+                                    <a href="ManagerDashboard?id=<c:out value="${employee.id }"/>" class="nav-link align-middle px-0">
                                         <i class="fa-solid fa-house"></i> <span
                                             class="ms-2 d-none d-sm-inline text-dark">Home</span>
                                     </a>
@@ -124,13 +125,13 @@
 
                                 <c:forEach items="${employees }" var="emp">
                                     <tr>
-                                        <td>$emp.id}</td>
-                                        <td>$emp.name}</td>
-                                        <td>$emp.username}</td>
-                                        <td>$emp.designation}</td>
-                                        <td>$emp.dept}</td>
-                                        <td>$emp.email}</td>
-                                        <td>${emp.mobilenumber }</td>
+                                        <td>${emp.id}</td>
+                                        <td>${emp.name}</td>
+                                        <td>${emp.username}</td>
+                                        <td>${emp.designation}</td>
+                                        <td>${emp.department}</td>
+                                        <td>${emp.email}</td>
+                                        <td>${emp.mobileNumber }</td>
 
 
 

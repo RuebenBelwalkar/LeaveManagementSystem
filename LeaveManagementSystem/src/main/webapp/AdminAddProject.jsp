@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" isELIgnored="false" %>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-        <!doctype html>
+<!doctype html>
         <html lang="en">
 
         <head>
@@ -15,6 +15,11 @@
             <script src="https://kit.fontawesome.com/a43228976e.js" crossorigin="anonymous"></script>
             <title>Leave Application</title>
         </head>
+        <style>
+            .disable{
+                display: none;
+            }
+        </style>
 
         <body>
 
@@ -121,8 +126,10 @@
                                 <div class="">
                                     <h2>Add Project</h2>
                                 </div>
+                                
+                                <div class="row mt-3">
                                 <!--Project Heading-->
-                                <div class="form-group mt-5">
+                                <div class="form-group col-md-6 mt-2">
                                     <label class="form-label fw-bold">Project Name</label>
                                     <input type="text" class="form-control border-top-0 border-start-0 border-end-0"
                                         id="pname" name="projectHeading" />
@@ -131,6 +138,70 @@
                                     </span>
 
                                 </div>
+                                <!-- DeadLine -->
+                                <div class="form-group col-md-6 mt-2">
+                                    <label class="form-label fw-bold">DeadLine</label>
+                                    <input type="date"
+                                        class="form-control border-top-0 border-start-0 border-end-0 border-bottom-1"
+                                        id="d1" name="date" required />
+                                </div>
+                                </div> 
+                                
+                                <!-- Department -->
+                                <div class="row mt-3">
+
+
+                                    <div class="form-group col-md-6 mt-2">
+                                        <label class="form-label fw-bold">Department</label>
+                                        <div class="d-flex flex-row justify-content-between align-items-center">
+                                            <select id="language" class="form-select border-top-0 border-start-0 border-end-0"
+                                                  name="department" onChange="departmentChange()" required>
+                                                <option value="" disabled selected>Choose Department</option>
+                                                <option value="IT">IT</option>
+                                                <option value="Finance">Finance</option>
+                                                <option value="HR" >HR</option>
+                                                
+                                            </select>
+
+                                        </div>
+                                        <span id="depterror">
+                                        </span>
+                                    </div>
+
+                                    <div class="form-group col-md-6 mt-2">
+                                        <label class="form-label fw-bold">Manager Name</label>
+                                        <div class="d-flex flex-row justify-content-between align-items-center">
+                                            <select class="form-select border-top-0 border-start-0 border-end-0 " id="default">
+                                                <option value="" disabled selected>Select Department</option>
+                                            </select>
+
+                                            <select class="form-select border-top-0 border-start-0 border-end-0  disable" id="hr">
+                                                <c:forEach items="${HR}" var="emp">
+                                                <option value="${emp.name }">${emp.name }</option>
+                                                 </c:forEach>
+                                            </select>
+
+                                            <select class="form-select border-top-0 border-start-0 border-end-0  disable" id="finance">
+                                                  <c:forEach items="${Finance}" var="emp">
+                                                <option value="${emp.name }">${emp.name }</option>
+                                                 </c:forEach>
+                                            </select>
+                                            
+
+                                            <select class="form-select border-top-0 border-start-0 border-end-0  disable" id="it">
+                                                  <c:forEach items="${IT}" var="emp">
+                                                <option value="${emp.name }">${emp.name }</option>
+                                                    </c:forEach>
+                                                
+                                            </select>
+
+                                        </div>
+                                        <span id="mnameerror">
+                                        </span>
+                                    </div>
+
+                                </div>
+                                
                                 <!-- Project Desciption -->
                                 <div class="form-group mt-3">
                                     <label class="form-label fw-bold">Project Description</label>
@@ -142,50 +213,6 @@
                                 <span id="descerror">
 
                                 </span>
-                                <!-- Department -->
-                                <div class="row mt-3">
-
-
-                                    <div class="form-group col-md-6 mt-2">
-                                        <label class="form-label fw-bold">Department</label>
-                                        <div class="d-flex flex-row justify-content-between align-items-center">
-                                            <select class="form-select border-top-0 border-start-0 border-end-0 "
-                                                id="dept" name="department" required>
-                                                <option value="" disabled selected>Choose Department</option>
-                                                <option value="08">IT</option>
-                                                <option value="09">Finance</option>
-                                                <option value="10">HR</option>
-                                            </select>
-
-                                        </div>
-                                        <span id="depterror">
-                                        </span>
-                                    </div>
-
-                                    <div class="form-group col-md-6 mt-2">
-                                        <label class="form-label fw-bold">Manager Name</label>
-                                        <div class="d-flex flex-row justify-content-between align-items-center">
-                                            <select class="form-select border-top-0 border-start-0 border-end-0 "
-                                                id="mname" name="department" required>
-                                                <option value="" disabled selected>Choose Manager</option>
-                                                <option value="08">IT</option>
-                                                <option value="09">Finance</option>
-                                                <option value="10">HR</option>
-                                            </select>
-
-                                        </div>
-                                        <span id="mnameerror">
-                                        </span>
-                                    </div>
-
-                                </div>
-                                <!-- DeadLine -->
-                                <div class="form-group col-md-6 mt-2">
-                                    <label class="form-label fw-bold">DeadLine</label>
-                                    <input type="date"
-                                        class="form-control border-top-0 border-start-0 border-end-0 border-bottom-1"
-                                        id="d1" name="date" required />
-                                </div>
                                 <!--  Submit Button -->
                                 <div class="text-center">
                                     <button class="btn btn-primary btn-block col-lg-3 col-3 mt-5 mb-3 text-center"
@@ -220,11 +247,39 @@
 
                 <!-- Start Scritp for Form -->
 
+                <script>
+                    
 
+                </script>
+                
+                  
+                
                 <script>
                     var name;
                     var desc;
 
+                                function departmentChange(){
+                                    var select = document.getElementById('language');
+                                    var option = select.options[select.selectedIndex];
+                                    document.getElementById('default').classList.add('disable');
+                                    document.getElementById('IT').classList.add('disable');
+                                    document.getElementById('Finance').classList.add('disable');
+                                    document.getElementById('HR').classList.add('disable');
+
+                                    document.getElementById(option.value).classList.remove('disable');
+                                    document.getElementById(option.value).classList.remove('disable');
+                                    document.getElementById(option.value).classList.remove('disable');
+
+                                    
+                                    // console.log(option.value)
+
+                                }
+                                // departmentChange()
+                                
+
+
+                    
+                    
                     function validate() {
                         this.name = document.getElementById('pname').value
                         this.desc = document.getElementById('pdesc').value

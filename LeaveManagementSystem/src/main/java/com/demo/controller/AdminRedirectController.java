@@ -60,8 +60,15 @@ public class AdminRedirectController {
 		ModelAndView mv =new ModelAndView();
 		System.out.println(id);
 		Admin admin = arep.findById(id);
+		List<Employee> IT =erep.findByDepartmentAndDesignation("IT", "Manager");
+		List<Employee> HR =erep.findByDepartmentAndDesignation("IT", "Manager");
+		List<Employee> Finance =erep.findByDepartmentAndDesignation("IT", "Manager");
+		System.out.println(IT);
 		mv.setViewName("AdminAddProject");
 		mv.addObject("admin", admin);
+		mv.addObject("IT", IT);
+		mv.addObject("HR", HR);
+		mv.addObject("Finance", Finance);
 		return mv;
 	}
 	@RequestMapping("/AdminManageLeave")

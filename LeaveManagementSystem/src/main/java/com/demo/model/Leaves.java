@@ -26,8 +26,16 @@ public class Leaves {
 	private String reason;
 	private String status;
 	private String empDesignation;
+	private String managerName;
 	
 	
+	
+	public String getManagerName() {
+		return managerName;
+	}
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
+	}
 	public String getEmpDesignation() {
 		return empDesignation;
 	}
@@ -92,8 +100,10 @@ public class Leaves {
 	public String toString() {
 		return "Leaves [lid=" + lid + ", empId=" + empId + ", empName=" + empName + ", startDate=" + startDate
 				+ ", endDate=" + endDate + ", days=" + days + ", leaveType=" + leaveType + ", reason=" + reason
-				+ ", status=" + status + ", empDesignation=" + empDesignation + "]";
+				+ ", status=" + status + ", empDesignation=" + empDesignation + ", managerName=" + managerName + "]";
 	}
+	
+	
 	
 	
 	

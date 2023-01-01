@@ -43,16 +43,22 @@ public class ManagerRedirectController {
 	public ModelAndView managerLeaveManage(@RequestParam("id") int id) {
 		ModelAndView mv=new ModelAndView();
 		Employee employee=erep.findById(id);
+		List<Leaves> leaves=lrep.findByManagerNameAndStatus(employee.getName(),"Pending");
 		mv.setViewName("ManagerManageLeave");
 		mv.addObject("employee", employee);
+		mv.addObject("leaves", leaves);
 		return mv;
 	}
 	@RequestMapping("/ManagerViewEmployee")
 	public ModelAndView managerViewEmployee(@RequestParam("id") int id) {
+		System.out.println("Welcome to manager view employee");
 		ModelAndView mv=new ModelAndView();
 		Employee employee=erep.findById(id);
+		List<Employee> emp =erep.findByStatusAndDepartmentAndManagerName("Active", employee.getDepartment(), employee.getName());
+		System.out.println(emp);
 		mv.setViewName("ManagerViewEmployee");
 		mv.addObject("employee", employee);
+		mv.addObject("employees", emp);
 		return mv;
 	}
 	@RequestMapping("/ManagerViewProject")
