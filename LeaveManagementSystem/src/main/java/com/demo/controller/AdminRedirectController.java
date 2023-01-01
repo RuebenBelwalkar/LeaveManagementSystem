@@ -32,6 +32,12 @@ public class AdminRedirectController {
 		Admin admin = arep.findById(id);
 		mv.setViewName("AdminAddEmployee");
 		mv.addObject("admin", admin);
+		List<Employee> IT =erep.findByDepartmentAndDesignation("IT", "Manager");
+		List<Employee> HR =erep.findByDepartmentAndDesignation("HR", "Manager");
+		List<Employee> Finance =erep.findByDepartmentAndDesignation("Finance", "Manager");
+		mv.addObject("IT", IT);
+		mv.addObject("HR", HR);
+		mv.addObject("Finance", Finance);
 		List<Employee> employee=erep.findByDesignation("Manager");
 		mv.addObject("employees", employee);
 		return mv;
@@ -61,14 +67,15 @@ public class AdminRedirectController {
 		System.out.println(id);
 		Admin admin = arep.findById(id);
 		List<Employee> IT =erep.findByDepartmentAndDesignation("IT", "Manager");
-		List<Employee> HR =erep.findByDepartmentAndDesignation("IT", "Manager");
-		List<Employee> Finance =erep.findByDepartmentAndDesignation("IT", "Manager");
-		System.out.println(IT);
-		mv.setViewName("AdminAddProject");
-		mv.addObject("admin", admin);
+		List<Employee> HR =erep.findByDepartmentAndDesignation("HR", "Manager");
+		List<Employee> Finance =erep.findByDepartmentAndDesignation("Finance", "Manager");
 		mv.addObject("IT", IT);
 		mv.addObject("HR", HR);
 		mv.addObject("Finance", Finance);
+		System.out.println(IT);
+		mv.setViewName("AdminAddProject");
+		mv.addObject("admin", admin);
+		
 		return mv;
 	}
 	@RequestMapping("/AdminManageLeave")

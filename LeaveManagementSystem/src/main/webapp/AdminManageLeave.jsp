@@ -108,7 +108,7 @@
 
                         </div>
                     </div>
-                    <div class="col-md-7 col-xl-9 col-8 mt-4 ms-5">
+                    <div class="col-md-7 col-xl-8 col-7 mt-4 ms-5 table-responsive">
                         <table id="table" class="table table-border table-hover mt-4">
                             <tr>
                                 <th>Leave ID</th>

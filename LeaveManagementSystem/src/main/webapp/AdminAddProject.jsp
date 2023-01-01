@@ -172,23 +172,27 @@
                                         <label class="form-label fw-bold">Manager Name</label>
                                         <div class="d-flex flex-row justify-content-between align-items-center">
                                             <select class="form-select border-top-0 border-start-0 border-end-0 " id="default">
-                                                <option value="" disabled selected>Select Department</option>
+                                                <option value="" disabled selected>Select Manager</option>
                                             </select>
 
-                                            <select class="form-select border-top-0 border-start-0 border-end-0  disable" id="hr">
+                                            <select class="form-select border-top-0 border-start-0 border-end-0  disable" id="HR">
+                                               <option value="" disabled selected>Select Manage</option>
                                                 <c:forEach items="${HR}" var="emp">
+                                                
                                                 <option value="${emp.name }">${emp.name }</option>
                                                  </c:forEach>
                                             </select>
 
-                                            <select class="form-select border-top-0 border-start-0 border-end-0  disable" id="finance">
+                                            <select class="form-select border-top-0 border-start-0 border-end-0  disable" id="Finance">
+                                                  <option value="" disabled selected>Select Manage</option>
                                                   <c:forEach items="${Finance}" var="emp">
                                                 <option value="${emp.name }">${emp.name }</option>
                                                  </c:forEach>
                                             </select>
                                             
 
-                                            <select class="form-select border-top-0 border-start-0 border-end-0  disable" id="it">
+                                            <select class="form-select border-top-0 border-start-0 border-end-0  disable" id="IT">
+                                                  <option value="" disabled selected>Select Manage</option>
                                                   <c:forEach items="${IT}" var="emp">
                                                 <option value="${emp.name }">${emp.name }</option>
                                                     </c:forEach>
@@ -255,31 +259,34 @@
                   
                 
                 <script>
-                    var name;
-                    var desc;
+                  
 
                                 function departmentChange(){
                                     var select = document.getElementById('language');
                                     var option = select.options[select.selectedIndex];
-                                    document.getElementById('default').classList.add('disable');
-                                    document.getElementById('IT').classList.add('disable');
+                                   document.getElementById('default').classList.add('disable');
+                                      document.getElementById('IT').classList.add('disable');
                                     document.getElementById('Finance').classList.add('disable');
                                     document.getElementById('HR').classList.add('disable');
-
+                                    
                                     document.getElementById(option.value).classList.remove('disable');
-                                    document.getElementById(option.value).classList.remove('disable');
-                                    document.getElementById(option.value).classList.remove('disable');
+                                       document.getElementById(option.value).classList.remove('disable');
+                                    document.getElementById(option.value).classList.remove('disable'); 
 
                                     
-                                    // console.log(option.value)
+                                    console.log(option.value)
+                                    console.log(select)
+
 
                                 }
                                 // departmentChange()
                                 
+				
+                                
+                                var name;                                              
+                                var desc;
 
-
-                    
-                    
+           
                     function validate() {
                         this.name = document.getElementById('pname').value
                         this.desc = document.getElementById('pdesc').value

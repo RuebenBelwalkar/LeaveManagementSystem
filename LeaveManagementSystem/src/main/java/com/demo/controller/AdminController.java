@@ -33,10 +33,11 @@ public class AdminController {
 	
 	@RequestMapping("/addEmployee")
 	public ModelAndView add(Model model ,Employee employee,@RequestParam("aid")int id) {
+		System.out.println(employee);
 		Admin admin=arep.findById(id);
 		Employee emp =as.add(employee);
-		emp.setAdmin(admin);
-		System.out.println(employee);
+		//emp.setAdmin(admin);
+		
 		erep.save(emp);
 		ModelAndView mv =new ModelAndView();
 		mv.setViewName("AdminAddEmployee");

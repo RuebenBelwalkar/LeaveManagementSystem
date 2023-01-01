@@ -21,4 +21,21 @@
   .card-body{
     font-size: 82%
   }
-  
+  .side-bar
+{
+    background-image: linear-gradient(rgb(222, 250, 252), rgb(222, 246, 249), rgb(223, 239, 244), 
+    rgb(224, 232, 239), rgb(224, 225, 233),rgb(240, 235, 240));
+
+}
+.navbar
+{
+    background-image: linear-gradient(rgb(222, 250, 252), rgb(222, 246, 249),rgb(223, 239, 244));
+    box-shadow:  5px 5px 5px 5px #64FFFF;
+}
+.col-auto
+{
+    
+   
+    background-image: linear-gradient(rgb(222, 250, 252), rgb(222, 246, 249), rgb(223, 239, 244), 
+    rgb(224, 232, 239), rgb(224, 225, 233),rgb(240, 235, 240));
+}

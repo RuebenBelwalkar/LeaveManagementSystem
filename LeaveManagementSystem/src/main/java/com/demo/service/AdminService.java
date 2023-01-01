@@ -24,7 +24,7 @@ public class AdminService {
 		employee.setSickLeave(15);
 		employee.setStatus("Active");
 		
-		erep.save(employee);
+	//	erep.save(employee);
 		
 		
 		Employee emp=erep.findById(erep.findByMaxId());

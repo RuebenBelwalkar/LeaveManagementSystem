@@ -31,18 +31,18 @@
                 <div class="d-none d-lg-block ms-5 ">
                     Welcome ${admin.name}
                 </div>
-                <div class="dropdown ms-5  text-end  ps-5">
+                <div class="dropdown ms-5 dropstart text-end ps-4">
                     <a href="" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle"
                         id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="/imges/profilelogo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
                         <span class="d-none d-sm-inline mx-1">Profile</span>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-dark me-5 text-small mb-0   shadow">
+                    <ul class="dropdown-menu dropdown-menu-dark text-centre  mt-4 text-small mb-0   shadow">
                         <li><a class="dropdown-item" href="./ResetPassword.html">Reset Password</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        <li><a class="dropdown-item text-centre " href="#">Sign out</a></li>
                     </ul>
                 </div>
             </div>
