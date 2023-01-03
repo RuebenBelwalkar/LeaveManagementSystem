@@ -1,5 +1,7 @@
 package com.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -7,10 +9,13 @@ import com.demo.model.Admin;
 import com.demo.model.Employee;
 import com.demo.model.Leaves;
 import com.demo.repositories.EmployeeRepository;
+import com.demo.repositories.LeavesRepository;
 @Component
 public class LeaveService {
 		@Autowired
 		EmployeeRepository erep;
+		@Autowired
+		LeavesRepository lrep;
 	
 	public Admin accept(Leaves leave) {
 		int empid=leave.getEmpId();
@@ -71,5 +76,23 @@ public class LeaveService {
 		Employee manager=erep.findByNameAndManagerNameIsNull(employee.getManagerName());
 		System.out.println(manager);
 		return manager;
+	}
+	
+	public Employee empReject(Leaves leave) {
+		Employee employee=erep.findById(leave.getEmpId());
+		Employee manager=erep.findByNameAndManagerNameIsNull(employee.getManagerName());
+		return manager;
+	}
+	
+	
+	public boolean checkManagerLeaveDuplicate(Leaves leave) {
+		List<Leaves> startDate=lrep.findByEmpIdAndStartDate(leave.getEmpId(), leave.getStartDate());
+		List<Leaves> endDate=lrep.findByEmpIdAndEndDate(leave.getEmpId(), leave.getEndDate());
+		List<Leaves> both=lrep.findByEmpIdAndStartDateAndEndDate(leave.getEmpId(), leave.getStartDate(), leave.getEndDate());
+		if(startDate.isEmpty() && endDate.isEmpty() && both.isEmpty()) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 }

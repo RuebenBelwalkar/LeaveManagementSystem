@@ -20,39 +20,35 @@
         </head>
 
         <body>
-            <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
-                <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
+    <div class="container-fluid">
 
-                    <div class="col-7">
+      <div class="col-8">
 
-                        <img src="/imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-1"
-                            style="width: 13%;">
-                    </div>
-                    <div class="collapse navbar-collapse ms-5 text-end">
-                        <form class="d-flex ms-2">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-primary" type="submit">Search</button>
-                        </form>
+        <img src="/imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-1" width="90" height="50">
+      </div>
+      
 
-                        <div class="dropdown ms-5">
-                            <a href="" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle"
-                                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="/imges/profilelogo.png" alt="hugenerd" width="30" height="30"
-                                    class="rounded-circle">
-                                <span class="d-none d-sm-inline mx-1">Profile</span>
-                            </a>
-
-                            <ul class="dropdown-menu dropdown-menu-dark text-small mb-0 shadow">
-                                <li><a class="dropdown-item" href="./ResetPassword.html">Reset Password</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Sign out</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+        <span class="d-flex d-none d-sm-block ">
+          Welcome ${admin.username}
+        </span>
+        <div class="dropdown dropstart ">
+          <a href="#" class="d-flex   align-items-center text-dark text-decoration-none dropdown-toggle"
+            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/imges/profilelogo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+            <span class="d-none d-sm-inline mx-1">Profile</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small mt-5 ms-2 shadow">
+            <li><a class="dropdown-item" href="/ResetPassword.jsp">Reset Password</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </div>
+      
+    </div>
+  </nav>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 " style="background-color: rgba(0, 0, 0, 0.2);">
@@ -110,6 +106,7 @@
                     </div>
                     <div class="col-md-7 col-xl-8 col-7 mt-4 ms-5 table-responsive">
                         <table id="table" class="table table-border table-hover mt-4">
+                        <thead><th class="fw-bold" colspan="2"><h4>Pending Leaves</h4></th></thead>
                             <tr>
                                 <th>Leave ID</th>
                                    <th>Employee ID</th>
@@ -152,8 +149,52 @@
                                 </tr>
                             </c:forEach>
                         </table>
-                    </div>
+                  
 
+
+
+						        
+                        <table id="table" class="table table-border table-hover mt-4">
+                         <thead><th class="fw-bold" colspan="2"><h4>Leave History</h4></th></thead>
+                            <tr>
+                            
+                                <th>Leave ID</th>
+                                   <th>Employee ID</th>
+                                <th> Name</th>
+                                <th> From</th>
+                                <th>To</th>
+                                 <th>Days</th>
+                                <th>Leave Type</th>
+                                 <th>Reason</th>
+                                <th>Status</th>
+
+                            </tr>
+
+                            <c:forEach items="${rest}" var="leave">
+                                <tr>
+                                    <td>${leave.lid}</td>
+                                    <td>${leave.empId}</td>
+                                    <td>${leave.empName}</td>
+                                    <td>${leave.startDate}</td>
+                                    <td>${leave.endDate}</td>
+                                      <td>${leave.days}</td>
+                                        <td>${leave.leaveType}</td>
+                                          <td>${leave.reason}</td>
+                                           <td>${leave.status}</td>
+
+
+
+
+                                   
+
+
+
+
+
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </div>
                     <footer class="bg-light text-lg-start ">
                         <div class=" p-3" style="background-color: rgba(0, 0, 0, 0.2);">
                             © 2022 Copyright: Leave Management System By TEAM NO-4

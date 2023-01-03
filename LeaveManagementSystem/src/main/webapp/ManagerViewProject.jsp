@@ -21,37 +21,35 @@
         </head>
 
         <body>
-            <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
-                <div class="container-fluid">
-                    <div class="col-8">
+           <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
+    <div class="container-fluid">
 
-                        <img src="./imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-2"
-                            style="width: 13%;">
-                    </div>
-                    <div class="collapse navbar-collapse ms-5 text-end">
+      <div class="col-8">
 
-                        <form class="d-flex ">
-                            Welcome ${Manager.name}
-                        </form>
-                        <div class="dropdown ms-4">
-                            <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle"
-                                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="./imges/profilelogo.png" alt="hugenerd" width="30" height="30"
-                                    class="rounded-circle">
-                                <span class="d-none d-sm-inline mx-1">Profile</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                                <li><a class="dropdown-item" href="./ResetPassword.html">Reset Password</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Sign out</a></li>
-                            </ul>
-                        </div>
+        <img src="/imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-1" width="90" height="50">
+      </div>
+      
 
-                    </div>
-                </div>
-            </nav>
+        <span class="d-flex d-none d-sm-block ">
+          Welcome ${employee.username}
+        </span>
+        <div class="dropdown dropstart ">
+          <a href="#" class="d-flex   align-items-center text-dark text-decoration-none dropdown-toggle"
+            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/imges/profilelogo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+            <span class="d-none d-sm-inline mx-1">Profile</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small mt-5 ms-2 shadow">
+            <li><a class="dropdown-item" href="/ResetPassword.jsp">Reset Password</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </div>
+      
+    </div>
+  </nav>
             <div class="container-fluid ">
 
                 <div class="row">
@@ -109,50 +107,36 @@
                     </div>
 
                     <div class="col-md-7 col-xl-9 col-8 mt-3 ">
-                        <div class="card-body ">
-
-                            <form action="#" method="" class="row ms-5">
-                                <!--Form Heading-->
-                                <div class=" pt-3 mb-3">
-                                    <h3>View Project</h3>
-                                </div>
-
-                                <div class="col-xl-6  col-md-6 col-12 mt-3 ">
-
-                                    <label class="form-label fw-bold ">Project Name</label>
-                                    <input type="text" name="name" value="${project.name}"
-                                        class="form-control border-top-0 border-start-0 border-end-0 " readonly />
-                                </div>
-
-                                <div class="col-xl-6  col-md-6 col-12 mt-3 ">
-                                    <label class="form-label fw-bold">Project End Date</label>
-                                    <input type="date" class="form-control border-top-0 border-start-0 border-end-0"
-                                        id="inputDate" name="date" readonly />
-                                </div>
-
-                                <div class="col-xl-6  col-md-6 col-12 mt-3">
-                                    <label class="form-label fw-bold ">Project Manager</label>
-                                    <input type="text" name="name" value="${manager.name}"
-                                        class="form-control border-top-0 border-start-0 border-end-0" readonly />
-                                </div>
-
-                                <!-----Project Description-->
-                                <div class="form-group mt-3">
-                                    <label class="form-label fw-bold">Project Description</label>
-                                    <!-- <input type="text" class="form-control" id="inputName" name="name" value="${employee.name}"
-                            readonly /> -->
-                                    <textarea class="form-control border-top-0 border-start-0 border-end-0"
-                                        id="inputName" name="name" id="" cols="30" rows="8" required></textarea>
-                                </div>
-
-
-
-                                <!----<div class="text-center">
-                            <button class="btn btn-primary btn-block col-3 mt-5 text-center" type="submit">Submit</button>
-                        </div>--->
-
-                            </form>
-                        </div>
+                 <div class="col-12 table-responsive ms-5 mt-5 md-3 ">
+                    <table class="table table-hover">
+                        
+                        <thead >
+                             <tr>
+                                <th ><h4>View Project</h4></th>
+                            </tr>
+                            
+                        <tr>
+                            <th scope="col">Project Name</th>
+                            <th scope="col">Project Manager </th>
+                            <th scope="col">End Date</th>
+                            <th scope="col">Project Discription</th>
+                            
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${leaves}" var="leave" >
+                        <tr>
+                            <td>${project.projectName}</td>
+                            <td>${project.managerName}</td>
+                            <td>${project.deadline}</td>
+                            <td>${project.discription}</td>
+                            
+                        </tr>
+                        
+                    </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
                     </div>
                 </div>
             </div>

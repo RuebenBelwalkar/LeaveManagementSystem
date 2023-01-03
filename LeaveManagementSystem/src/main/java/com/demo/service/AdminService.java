@@ -1,5 +1,6 @@
 package com.demo.service;
 
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class AdminService {
 		employee.setSickLeave(15);
 		employee.setStatus("Active");
 		
-	//	erep.save(employee);
+	erep.save(employee);
 		
 		
 		Employee emp=erep.findById(erep.findByMaxId());
@@ -38,5 +39,15 @@ public class AdminService {
 		
 		return emp;
 		
+	}
+	
+	public boolean checkDuplicate(Employee employee) {
+		List<Employee> duplicate=erep.findByEmail(employee.getEmail());
+		System.out.println(duplicate);
+		if(duplicate.isEmpty()) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 }

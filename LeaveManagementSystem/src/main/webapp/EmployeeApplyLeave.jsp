@@ -16,42 +16,40 @@
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
                 crossorigin="anonymous"></script>
+                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
             <script src="https://kit.fontawesome.com/a43228976e.js" crossorigin="anonymous"></script>
         </head>
 
         <body>
             <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
-                <div class="container-fluid">
+    <div class="container-fluid">
 
-                    <div class="col-8">
+      <div class="col-8">
 
-                        <img src="./imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-4"
-                            style="width: 13%;">
-                    </div>
-                    <div class="collapse navbar-collapse ms-5 text-end">
+        <img src="/imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-1" width="90" height="50">
+      </div>
+      
 
-                        <form class="d-flex ">
-                            Welcome ${Employee.name}
-                        </form>
-                        <div class="dropdown ms-4">
-                            <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle"
-                                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="./imges/profilelogo.png" alt="hugenerd" width="30" height="30"
-                                    class="rounded-circle">
-                                <span class="d-none d-sm-inline mx-1">Profile</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                                <li><a class="dropdown-item" href="ResetPassword.html">Reset Password</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="">Sign out</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </nav>
+        <span class="d-flex d-none d-sm-block ">
+          Welcome ${employee.username}
+        </span>
+        <div class="dropdown dropstart ">
+          <a href="#" class="d-flex   align-items-center text-dark text-decoration-none dropdown-toggle"
+            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/imges/profilelogo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+            <span class="d-none d-sm-inline mx-1">Profile</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small mt-5 ms-2 shadow">
+            <li><a class="dropdown-item" href="/ResetPassword.jsp">Reset Password</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </div>
+      
+    </div>
+  </nav>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 " style="background-color: rgba(0, 0, 0, 0.2);">
@@ -94,13 +92,13 @@
 
                         </div>
                     </div>
-                    <div class="col-md-7 col-xl-9 col-8 mt-3 ">
+                           <div class="col-md-7 col-xl-9 col-8 mt-3 ">
                         <div class="card-body ">
 
-                            <form action="empApplyLeave" method="" class="row ms-5" onsubmit=" return calculateday()">
+                            <form action="applyLeave"  class="row ms-5" onsubmit=" return calculateday()">
                                 <!--Form Heading-->
                                 <div class=" pt-3 mb-3">
-                                  <span class="text-success"><h3>${success}</h3></span>
+                                <span class="text-success"><h3>${success}</h3></span>
                                     <h3>Leave Application</h3>
                                 </div>
                                 <!--Employee ID-->
@@ -116,6 +114,7 @@
                                     <input type="text" name="empName" value="${employee.name}"
                                         class="form-control border-top-0 border-start-0 border-end-0" readonly />
                                 </div>
+                                <input type="hidden" name="empDesignation" value="${employee.designation }">
 
                                 <!-- Start  Date -->
                                 <div class="row">
@@ -123,7 +122,7 @@
                                     <div class="col-xl-6  col-md-6 col-12 mt-3">
                                         <label class="form-label fw-bold">Start Date</label>
                                         <input type="date" class="form-control border-top-0 border-start-0 border-end-0"
-                                            id="d1" name="startDate" required />
+                                            id="d1" name="startDate"  />
 
                                         <Span id="d1error"></Span>
                                     </div>
@@ -132,7 +131,7 @@
                                     <div class="col-xl-6  col-md-6 col-12 mt-3">
                                         <label class="form-label fw-bold">End Date</label>
                                         <input type="date" class="form-control border-top-0 border-start-0 border-end-0"
-                                            id="d2" name="endDate" onchange=" return calculateday()" required />
+                                            id="d2" name="endDate" onchange=" return calculateday()"  />
                                         <Span id="d2error"></Span>
                                     </div>
 
@@ -148,28 +147,26 @@
                                     <label class="form-label fw-bold">Leave Type</label>
                                     <div class="d-flex flex-row mt-2  border-top-0 border-start-0 border-end-0">
                                         <select class="form-select" id="leave" name="leaveType" required>
-                                            <option value="" disabled selected>Choose LeaveType</option>
-                                            <option id="sl" value="Sick Leave">Sick Leave</option>
-                                            <option id="pl" value="Personal Leave">Personal Leave</option>
-                                            <option id="cl" value="Casual Leave">Casual Leave</option>
-                                            <option id="ml" value="Maternity Leave">Maternity Leave</option>
-                                            <option id="ptl" value="Paternity Leave">Paternity Leave</option>
-                                            <option id="mrl" value="Marriage Leave">Marriage Leave</option>
-                                            <option id="al" value="Adoption Leave">Adoption Leave</option>
+                                            <option value="" disabled hidden selected>Choose LeaveType</option>
+                                            <option id="sl" value="Sick Leave" data-bs-toggle="tooltip" data-bs-placement="top" title="Available ${employee.sickLeave }">Sick Leave</option>
+                                            <option id="pl" value="Personal Leave" data-bs-toggle="tooltip" data-bs-placement="top" title="${employee.personalLeave }">Personal Leave</option>
+                                            <option id="cl" value="Casual Leave"  data-bs-toggle="tooltip" data-bs-placement="top" title="${employee.casualLeave }">Casual Leave</option>
+                                            <option id="ml" value="Maternity Leave" data-bs-toggle="tooltip" data-bs-placement="top" title="${employee.maternityLeave }">Maternity Leave</option>
+                                            <option id="ptl" value="Paternity Leave"  data-bs-toggle="tooltip" data-bs-placement="top" title="${employee.paternityLeave }">Paternity Leave</option>
+                                            <option id="mrl" value="Marriage Leave"  data-bs-toggle="tooltip" data-bs-placement="top" title="${employee.marriageLeave }">Marriage Leave</option>
+                                            <option id="al" value="Adoption Leave"  data-bs-toggle="tooltip" data-bs-placement="top" title="${employee.adoptionLeave }">Adoption Leave</option>
 
                                         </select>
 
                                     </div>
                                 </div>
-                                 <div class="form-group mt-3">
+                                <div class="form-group mt-3">
                                     <label class="form-label fw-bold">Leave Reason</label>
                                     <!-- <input type="text" class="form-control" id="inputName" name="name" value="${employee.name}"
                             readonly /> -->
                                     <textarea class="form-control border-top-0 border-start-0 border-end-0"
                                         id="inputName" name="reason" id="pdesc" cols="30" rows="5" required></textarea>
                                 </div>
-                                <input type="hidden" name="managerName" value="${employee.managerName }">
-								 <input type="hidden" name="designation" value="${employee.designation }">
                                 <div class="text-center">
                                     <button class="btn btn-primary btn-block col-3 mt-5 text-center"
                                         type="submit">Submit</button>
@@ -179,6 +176,9 @@
 
                         </div>
                     </div>
+
+                    </div>
+                    
                 </div>
 
                 <footer class="bg-light text-center text-lg-start ">
@@ -187,95 +187,111 @@
                     </div>
                 </footer>
 
-                <script>
-                    $(function () {
-                        var dtToday = new Date();
+               
+               <script>
+            const picker = document.getElementById('d1');
+            picker.addEventListener('input', function(e){
+              var day = new Date(this.value).getUTCDay();
+              if([6,0].includes(day)){
+                e.preventDefault();
+                this.value = '';
+                alert('Weekends not allowed');
+              }
+            });
 
-                        var month = dtToday.getMonth() + 1;
-                        var day = dtToday.getDate();
-                        var year = dtToday.getFullYear();
-                        if (month < 10)
-                            month = '0' + month.toString();
-                        if (day < 10)
-                            day = '0' + day.toString();
+            const picker2 = document.getElementById('d2');
+            picker2.addEventListener('input', function(e2){
+              var day2 = new Date(this.value).getUTCDay();
+              if([6,0].includes(day2)){
+                e2.preventDefault();
+                this.value = '';
+                alert('Weekends not allowed');
+              }
+            });
 
-                        var minDate = year + '-' + month + '-' + day;
+                function calculateday() {
 
-                        $('#d1').attr('min', minDate);
-                        $('#d2').attr('min', minDate);
-                    });
-                </script>
+                    var d1 = document.getElementById('d1').value;
+                    var d2 = document.getElementById('d2').value;
 
-                <script>
+                    var leave = document.getElementById('leave');
+                    var value1 = leave.value;
+                    var dateone = new Date(d1);
+                    var datetwo = new Date(d2);
+                    // datetwo.setDate(datetwo.getDate() + 1);
+                    var time = Math.abs(datetwo - dateone);
+                    var days = Math.ceil(time / (1000 * 60 * 60 * 24));
+                    var weeks = Math.floor(days / 7);
+                    days = days - (weeks * 2);
+                    var startDay = dateone.getDay();
+                    var endDay = datetwo.getDay();
+                    if (startDay - endDay > 1) {
+                        days = days - 2;
+                    }
+                    if (startDay == 0 && endDay != 6) {
+                        days = days - 1;
+                    }
+                    if (endDay == 6 && startDay != 0) {
+                        days = days - 1;
+                    }
 
-                    function calculateday() {
+                    document.getElementById('output').value = days + 1;
 
-                        var d1 = document.getElementById('d1').value;
-                        var d2 = document.getElementById('d2').value;
+                    if (days > 7 && (value1 == "Sick Leave" || value1 == "Personal Leave" || value1 == "Casual Leave")) {
+                        document.getElementById('d2error').innerHTML = "*" + value1 + " Can't Be More Than 7 Days"
+                        document.getElementById('d2error').style.color = "red"
+                        document.getElementById('d2').focus()
+                        return false;
 
-                        var leave = document.getElementById('leave');
-                        var value1 = leave.value;
-                        var dateone = new Date(d1);
-                        var datetwo = new Date(d2);
-                        // datetwo.setDate(datetwo.getDate() + 1);
-                        var time = Math.abs(datetwo - dateone);
-                        var days = Math.ceil(time / (1000 * 60 * 60 * 24));
-                        var weeks = Math.floor(days / 7);
-                        days = days - (weeks * 2);
-                        var startDay = dateone.getDay();
-                        var endDay = datetwo.getDay();
-                        if (startDay - endDay > 1) {
-                            days = days - 2;
-                        }
-                        if (startDay == 0 && endDay != 6) {
-                            days = days - 1;
-                        }
-                        if (endDay == 6 && startDay != 0) {
-                            days = days - 1;
-                        }
+                    }
 
-                        document.getElementById('output').value = days + 1;
+                    else if (days > 30 && (value1 == "Paternity Leave" || value1 == "Adoption Leave")) {
+                        document.getElementById('d2error').innerHTML = "*" + value1 + " " + "Can't Be More Than 30 Days"
+                        document.getElementById('d2error').style.color = "red"
+                        document.getElementById('d2').focus()
+                        return false;
+                    }
 
-                        if (days > 7 && (value1 == "Sick Leave" || value1 == "Personal Leave" || value1 == "Casual Leave")) {
-                            document.getElementById('d2error').innerHTML = "*" + value1 + " Can't Be More Than 7 Days"
-                            document.getElementById('d2error').style.color = "red"
-                            document.getElementById('d2').focus()
-                            return false;
+                    else if (days > 180 && value1 == "Maternity Leave") {
+                        document.getElementById('d2error').innerHTML = "*" + value1 + " " + "Can't Be More Than 180 Days"
+                        document.getElementById('d2error').style.color = "red"
+                        document.getElementById('d2').focus()
+                        return false;
+                    }
 
-                        }
-
-                        else if (days > 30 && (value1 == "Paternity Leave" || value1 == "Adoption Leave")) {
-                            document.getElementById('d2error').innerHTML = "*" + value1 + " " + "Can't Be More Than 30 Days"
-                            document.getElementById('d2error').style.color = "red"
-                            document.getElementById('d2').focus()
-                            return false;
-                        }
-
-                        else if (days > 180 && value1 == "Maternity Leave") {
-                            document.getElementById('d2error').innerHTML = "*" + value1 + " " + "Can't Be More Than 180 Days"
-                            document.getElementById('d2error').style.color = "red"
-                            document.getElementById('d2').focus()
-                            return false;
-                        }
-
-                        else if (days > 15 && value1 == "Marriage Leave") {
-                            document.getElementById('d2error').innerHTML = "*" + value1 + " " + "Can't Be More Than 15 Days"
-                            document.getElementById('d2error').style.color = "red"
-                            document.getElementById('d2').focus()
-                            return false;
-                        }
-
-
-
-
-                        else {
-                            document.getElementById('d2error').innerHTML = ""
-                        }
+                    else if (days > 15 && value1 == "Marriage Leave") {
+                        document.getElementById('d2error').innerHTML = "*" + value1 + " " + "Can't Be More Than 15 Days"
+                        document.getElementById('d2error').style.color = "red"
+                        document.getElementById('d2').focus()
+                        return false;
                     }
 
 
-                </script>
 
+
+                    else {
+                        document.getElementById('d2error').innerHTML = ""
+                    }
+                }
+                
+                $(function () {
+                    var dtToday = new Date();
+
+                    var month = dtToday.getMonth() + 1;
+                    var day = dtToday.getDate();
+                    var year = dtToday.getFullYear();
+                    if (month < 10)
+                        month = '0' + month.toString();
+                    if (day < 10)
+                        day = '0' + day.toString();
+
+                    var minDate = year + '-' + month + '-' + day;
+
+                    $('#d1').attr('min', minDate);
+                    $('#d2').attr('min', minDate);
+                });
+
+            </script>
         </body>
 
         </html>

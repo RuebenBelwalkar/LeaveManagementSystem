@@ -19,37 +19,35 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
-        <div class="container-fluid">
+   <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
+    <div class="container-fluid">
 
-            <div class="col-7">
+      <div class="col-8">
 
-                <img src="/imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-1" style="width: 13%;">
-            </div>
-            <div class="collapse navbar-collapse ms-5 text-end">
-                <form class="d-flex">
-                    <input class="form-control me-3" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-primary" type="submit">Search</button>
-                </form>
+        <img src="/imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-1" width="90" height="50">
+      </div>
+      
 
-                <div class="dropdown ms-5">
-                    <a href="" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle"
-                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="/imges/profilelogo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                        <span class="d-none d-sm-inline mx-1">Profile</span>
-                    </a>
-
-                    <ul class="dropdown-menu dropdown-menu-dark text-small mb-0 shadow">
-                        <li><a class="dropdown-item" href="./ResetPassword.html">Reset Password</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
-                    </ul>
-                </div>
-            </div>
+        <span class="d-flex d-none d-sm-block ">
+          Welcome ${admin.username}
+        </span>
+        <div class="dropdown dropstart ">
+          <a href="#" class="d-flex   align-items-center text-dark text-decoration-none dropdown-toggle"
+            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/imges/profilelogo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+            <span class="d-none d-sm-inline mx-1">Profile</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small mt-5 ms-2 shadow">
+            <li><a class="dropdown-item" href="/ResetPassword.jsp">Reset Password</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
         </div>
-    </nav>
+      
+    </div>
+  </nav>
     <div class="container-fluid">
         <div class="row">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 " style="background-color: rgba(0, 0, 0, 0.2);">
@@ -102,7 +100,7 @@
                 </div>
             </div>
 
-            <div class="col-md-7 col-xl-9 col-8 mt-4 ms-5">
+            <div class="col-md-7 col-xl-9 col-8 mt-4 ms-5 table-responsive">
                 <table id="table" class="table table-border table-hover mt-4">
                     <tr>
                         <th> ID</th>

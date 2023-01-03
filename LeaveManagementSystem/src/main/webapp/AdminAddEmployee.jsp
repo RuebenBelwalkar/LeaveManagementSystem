@@ -24,36 +24,35 @@
             }
         </style>
     <body>
-      <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
-        <div class="container-fluid">
+     <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
+    <div class="container-fluid">
 
-          <div class="col-8">
+      <div class="col-8">
 
-            <img src="/imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-1" style="width: 13%;">
-          </div>
-          <div class="collapse navbar-collapse ms-5 text-end">
+        <img src="/imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-1" width="90" height="50">
+      </div>
+      
 
-            <form class="d-flex ">
-              Welcome ${admin.name}
-            </form>
-            <div class="dropdown ms-4 dropstart">
-              <a href="#" class="d-flex  align-items-center text-dark text-decoration-none dropdown-toggle"
-                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="/imges/profilelogo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                <span class="d-none d-sm-inline mx-1 ">Profile</span>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li><a class="dropdown-item" href="./ResetPassword.html">Reset Password</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-              </ul>
-            </div>
-          </div>
+        <span class="d-flex d-none d-sm-block ">
+          Welcome ${admin.username}
+        </span>
+        <div class="dropdown dropstart ">
+          <a href="#" class="d-flex   align-items-center text-dark text-decoration-none dropdown-toggle"
+            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/imges/profilelogo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+            <span class="d-none d-sm-inline mx-1">Profile</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small mt-5 ms-2 shadow">
+            <li><a class="dropdown-item" href="/ResetPassword.jsp">Reset Password</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
         </div>
-      </nav>
-      <div class="container-fluid ">
+      
+    </div>
+  </nav>  <div class="container-fluid ">
 
         <div class="row">
           <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 " style="background-color: rgba(0, 0, 0, 0.2);">
@@ -110,14 +109,15 @@
                     <h3 class="mb-5 mt-4">Add Employee</h3>
                     <div class="col-xl-6  col-md-6 col-12 mt-2">
                         <label class="form-label fw-bold ">Name</label>
-                        <input type="text" id="name" name="name"
+                        <input type="text" id="name" name="name" 
                             class="form-control border-top-0 border-start-0 border-end-0" />
                         <span id="nameerror"></span>
                     </div>
                     <div class="col-xl-6 col-md-6 col-12 mt-2">
                         <label class="form-label fw-bold ">Email</label>
-                        <input type="email" id="email" name="email"
+                        <input type="email" id="email" name="email"  
                             class="form-control border-top-0 border-start-0 border-end-0">
+                             <span class="text-danger">${duplicate}</span>
                         <span id="emailerror"></span>
                     </div>
                     <div class="col-xl-6 col-md-6 col-12 mt-3">
@@ -128,7 +128,7 @@
                     </div>
                     <div class="col-xl-6 col-md-6 col-12 mt-3">
                         <label class="form-label fw-bold ">Phone Number</label>
-                        <input type="number" id="number" name="mobileNumber"
+                        <input type="number" id="number" name="mobileNumber" 
                             class="form-control border-top-0 border-start-0 border-end-0">
                         <span id="numbererror"></span>
                     </div>
@@ -140,14 +140,14 @@
                     </div>
                     <div class="col-xl-6 col-md-6 col-12 mt-3">
                         <label class="form-label fw-bold ">Joining Date</label>
-                        <input type="date" id="jdate" name="jdate"
+                        <input type="date" id="jdate" name="joiningDate"  
                             class="form-control border-top-0 border-start-0 border-end-0">
                         <span id="jdateerror"></span>
                     </div>
                     <div class="col-xl-6 col-md-6 col-12 mt-3">
                         <label class="form-label fw-bold ">Designation</label>
-                        <select name="designation" id="designation"
-                            class="form-select border-top-0 border-start-0 border-end-0">
+                        <select name="designation" id="designation" onchange="ManagerValidation()"
+                            class="form-select border-top-0 border-start-0 border-end-0" >
                             <option selected disabled value="">Choose designation</option>
                             <option value="Trainee">Trainee </option>
                             <option value="Associate">Associate</option>
@@ -260,8 +260,8 @@
 
                     <div class="col-12 mt-3">
                         <div> <label class="form-label fw-bold ">Address</label></div>
-                        <textarea name="address" id="address" cols="60" rows="2"
-                            class="form-control border-top-0 border-start-0 border-end-0"></textarea>
+                        <textarea name="address" id="address" cols="60" rows="2" 
+                            class="form-control border-top-0 border-start-0 border-end-0"> </textarea>
                         <span id="addresserror"></span>
                     </div>
                     <input type="hidden" name="aid" value="${admin.id }">
@@ -317,7 +317,7 @@
                 return false;
             }
             else {
-                this.regex = /^[A-Za-z. ]{3,10}$/;
+                this.regex = /^[A-Za-z. ]{3,20}$/;
                 if (!this.regex.test(this.name)) {
                     document.getElementById('nameerror').innerHTML = "*Enter valid name"
                     document.getElementById('nameerror').style.color = "red"
@@ -479,6 +479,31 @@
 
 
         }
+        function ManagerValidation(){
+            var status = document.getElementById("designation");
+            
+            if(status.value == "Manager"){
+                document.getElementById("default").disabled = true;
+                document.getElementById("IT").disabled = true;
+                document.getElementById("Finance").disabled = true;
+                document.getElementById("HR").disabled = true;
+            
+                if(status.value != "Manager"  ){
+                    document.getElementById("default").disabled = false;
+                    document.getElementById("IT").disabled = false;
+                    document.getElementById("Finance").disabled = false;
+                    document.getElementById("HR").disabled = false;
+                }
+            }
+            else{
+                document.getElementById("default").disabled = false;
+                document.getElementById("IT").disabled = false;
+                document.getElementById("Finance").disabled = false;
+                document.getElementById("HR").disabled = false;
+
+            }   
+        }
+       
     </script>
 
     </body>

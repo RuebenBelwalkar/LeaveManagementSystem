@@ -22,38 +22,35 @@
         </head>
 
         <body>
-            <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
-                <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
+    <div class="container-fluid">
 
-                    <div class="col-8">
+      <div class="col-8">
 
-                        <img src="./imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-4"
-                            style="width: 12%;">
-                    </div>
-                    <div class="collapse navbar-collapse ms-5 text-end">
+        <img src="/imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-1" width="90" height="50">
+      </div>
+      
 
-                        <form class="d-flex ">
-                            Welcome ${employee.name}
-                        </form>
-                        <div class="dropdown ms-4">
-                            <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle"
-                                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="./imges/profilelogo.png" alt="hugenerd" width="30" height="30"
-                                    class="rounded-circle">
-                                <span class="d-none d-sm-inline mx-1">Profile</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                                <li><a class="dropdown-item" href="./ResetPassword.html">Reset Password</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Sign out</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </nav>
+        <span class="d-flex d-none d-sm-block ">
+          Welcome ${employee.username}
+        </span>
+        <div class="dropdown dropstart ">
+          <a href="#" class="d-flex   align-items-center text-dark text-decoration-none dropdown-toggle"
+            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/imges/profilelogo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+            <span class="d-none d-sm-inline mx-1">Profile</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small mt-5 ms-2 shadow">
+            <li><a class="dropdown-item" href="/ResetPassword.jsp">Reset Password</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </div>
+      
+    </div>
+  </nav>
             <div class="container-fluid ">
 
                 <div class="row">
@@ -117,6 +114,7 @@
                                 <!--Form Heading-->
                                 <div class=" pt-3 mb-3">
                                 <span class="text-success"><h3>${success}</h3></span>
+                                 <span class="text-danger"><h3>${duplicate}</h3></span>
                                     <h3>Leave Application</h3>
                                 </div>
                                 <!--Employee ID-->
@@ -140,7 +138,7 @@
                                     <div class="col-xl-6  col-md-6 col-12 mt-3">
                                         <label class="form-label fw-bold">Start Date</label>
                                         <input type="date" class="form-control border-top-0 border-start-0 border-end-0"
-                                            id="d1" name="startDate" required />
+                                            id="d1" name="startDate"  />
 
                                         <Span id="d1error"></Span>
                                     </div>
@@ -149,7 +147,7 @@
                                     <div class="col-xl-6  col-md-6 col-12 mt-3">
                                         <label class="form-label fw-bold">End Date</label>
                                         <input type="date" class="form-control border-top-0 border-start-0 border-end-0"
-                                            id="d2" name="endDate" onchange=" return calculateday()" required />
+                                            id="d2" name="endDate" onchange=" return calculateday()"  />
                                         <Span id="d2error"></Span>
                                     </div>
 
@@ -165,14 +163,14 @@
                                     <label class="form-label fw-bold">Leave Type</label>
                                     <div class="d-flex flex-row mt-2  border-top-0 border-start-0 border-end-0">
                                         <select class="form-select" id="leave" name="leaveType" required>
-                                            <option value="" disabled selected>Choose LeaveType</option>
-                                            <option id="sl" value="Sick Leave">Sick Leave</option>
-                                            <option id="pl" value="Personal Leave">Personal Leave</option>
-                                            <option id="cl" value="Casual Leave">Casual Leave</option>
-                                            <option id="ml" value="Maternity Leave">Maternity Leave</option>
-                                            <option id="ptl" value="Paternity Leave">Paternity Leave</option>
-                                            <option id="mrl" value="Marriage Leave">Marriage Leave</option>
-                                            <option id="al" value="Adoption Leave">Adoption Leave</option>
+                                            <option value="" disabled hidden selected>Choose LeaveType</option>
+                                            <option id="sl" value="Sick Leave" data-bs-toggle="tooltip" data-bs-placement="top" title="Available ${employee.sickLeave }">Sick Leave</option>
+                                            <option id="pl" value="Personal Leave" data-bs-toggle="tooltip" data-bs-placement="top" title="${employee.personalLeave }">Personal Leave</option>
+                                            <option id="cl" value="Casual Leave"  data-bs-toggle="tooltip" data-bs-placement="top" title="${employee.casualLeave }">Casual Leave</option>
+                                            <option id="ml" value="Maternity Leave" data-bs-toggle="tooltip" data-bs-placement="top" title="${employee.maternityLeave }">Maternity Leave</option>
+                                            <option id="ptl" value="Paternity Leave"  data-bs-toggle="tooltip" data-bs-placement="top" title="${employee.paternityLeave }">Paternity Leave</option>
+                                            <option id="mrl" value="Marriage Leave"  data-bs-toggle="tooltip" data-bs-placement="top" title="${employee.marriageLeave }">Marriage Leave</option>
+                                            <option id="al" value="Adoption Leave"  data-bs-toggle="tooltip" data-bs-placement="top" title="${employee.adoptionLeave }">Adoption Leave</option>
 
                                         </select>
 
@@ -205,7 +203,180 @@
                 </div>
             </footer>
 
+         
+
             <script>
+            const picker = document.getElementById('d1');
+            picker.addEventListener('input', function(e){
+              var day = new Date(this.value).getUTCDay();
+              if([6,0].includes(day)){
+                e.preventDefault();
+                this.value = '';
+                alert('Weekends not allowed');
+              }
+            });
+
+            const picker2 = document.getElementById('d2');
+            picker2.addEventListener('input', function(e2){
+              var day2 = new Date(this.value).getUTCDay();
+              if([6,0].includes(day2)){
+                e2.preventDefault();
+                this.value = '';
+                alert('Weekends not allowed');
+              }
+            });
+
+                function calculateday() {
+
+                   
+					var mleave= ${employee.marriageLeave}
+					var sleave=${employee.sickLeave}
+					var pleave=${employee.personalLeave}
+					var cleave=${employee.casualLeave}
+					var mtrleave=${employee.maternityLeave}
+					var ptrleave=${employee.paternityLeave}
+					var aleave=${employee.adoptionLeave}
+                    var leave = document.getElementById('leave');
+                    var value1 = leave.value;
+                    var d1 = document.getElementById('d1').value;
+                    var d2 = document.getElementById('d2').value;
+                    var dateone = new Date(d1);
+                    var datetwo = new Date(d2);
+                    // datetwo.setDate(datetwo.getDate() + 1);
+                    var time = Math.abs(datetwo - dateone);
+                    var days = Math.ceil(time / (86400*1000));
+                    var weeks = Math.floor(days / 7);
+                    days = days - (weeks * 2);
+                    var startDay = dateone.getDay();
+                    var endDay = datetwo.getDay();
+                    if (startDay - endDay > 1) {
+                        days = days - 2;
+                    }
+                    if (startDay == 0 && endDay != 6) {
+                        days = days - 1;
+                    }
+                    if (endDay == 6 && startDay != 0) {
+                        days = days - 1;
+                    }
+
+                    document.getElementById('output').value = days + 1;
+				// Sick Leave Validation
+                    if (days > 7 && value1 == "Sick Leave" ) {
+                        document.getElementById('d2error').innerHTML = "*" + value1 + " Can't Be More Than 7 Days"
+                        document.getElementById('d2error').style.color = "red"
+                        document.getElementById('d2').focus()
+                        return false;
+
+                    } else if( value1 == "Sick Leave" && days > sleave) {
+                        document.getElementById('d2error').innerHTML = "*Insufficient " + value1 + "  available"
+                        document.getElementById('d2error').style.color = "red"
+                        document.getElementById('d2').focus()
+                        return false;
+
+                    }else{
+                        document.getElementById('d2error').innerHTML = ""
+                    }
+                    
+				//Casual Leave Validation
+                    if (days > 7 && value1 == "Casual Leave" ) {
+                        document.getElementById('d2error').innerHTML = "*" + value1 + " Can't Be More Than 7 Days"
+                        document.getElementById('d2error').style.color = "red"
+                        document.getElementById('d2').focus()
+                        return false;
+
+                    } else if( value1 == "Casual Leave" && days > cleave) {
+                        document.getElementById('d2error').innerHTML = "*Insufficient " + value1 + "  available"
+                        document.getElementById('d2error').style.color = "red"
+                        document.getElementById('d2').focus()
+                        return false;
+
+                    }else{
+                        document.getElementById('d2error').innerHTML = ""
+                    }
+                    
+				//Personal Leave Validation
+				if (days > 7 && value1 == "Personal Leave" ) {
+                        document.getElementById('d2error').innerHTML = "*" + value1 + " Can't Be More Than 7 Days"
+                        document.getElementById('d2error').style.color = "red"
+                        document.getElementById('d2').focus()
+                        return false;
+
+                    } else if( value1 == "PersonalLeave" && days > pleave) {
+                        document.getElementById('d2error').innerHTML = "*Insufficient " + value1 + "  available"
+                        document.getElementById('d2error').style.color = "red"
+                        document.getElementById('d2').focus()
+                        return false;
+
+                    }else{
+                        document.getElementById('d2error').innerHTML = ""
+                    }
+				// Maternity leave Validation
+				if (days > 180 && value1 == "Maternity Leave" ) {
+                        document.getElementById('d2error').innerHTML = "*" + value1 + " Can't Be More Than 180 Days"
+                        document.getElementById('d2error').style.color = "red"
+                        document.getElementById('d2').focus()
+                        return false;
+
+                    } else if( value1 == "Maternity Leave" && days > mtrleave) {
+                        document.getElementById('d2error').innerHTML = "*Insufficient " + value1 + "  available"
+                        document.getElementById('d2error').style.color = "red"
+                        document.getElementById('d2').focus()
+                        return false;
+
+                    }else{
+                        document.getElementById('d2error').innerHTML = ""
+                    }
+				// Paternity Leave Validaton
+				if (days > 30 && value1 == "Paternity Leave" ) {
+                        document.getElementById('d2error').innerHTML = "*" + value1 + " Can't Be More Than 30 Days"
+                        document.getElementById('d2error').style.color = "red"
+                        document.getElementById('d2').focus()
+                        return false;
+
+                    } else if( value1 == "Paternity Leave" && days > ptrleave) {
+                        document.getElementById('d2error').innerHTML = "*Insufficient " + value1 + "  available"
+                        document.getElementById('d2error').style.color = "red"
+                        document.getElementById('d2').focus()
+                        return false;
+
+                    }else{
+                        document.getElementById('d2error').innerHTML = ""
+                    }
+				// Marriage Leave Validation
+				if (days >15  && value1 == "Marriage Leave" ) {
+                        document.getElementById('d2error').innerHTML = "*" + value1 + " Can't Be More Than 15 Days"
+                        document.getElementById('d2error').style.color = "red"
+                        document.getElementById('d2').focus()
+                        return false;
+
+                    } else if( value1 == "Marriage Leave" && days > mleave) {
+                        document.getElementById('d2error').innerHTML = "*Insufficient " + value1 + "  available"
+                        document.getElementById('d2error').style.color = "red"
+                        document.getElementById('d2').focus()
+                        return false;
+
+                    }else{
+                        document.getElementById('d2error').innerHTML = ""
+                    }
+				// Adoption Leave Validation
+				if (days > 15 && value1 == "Adoption Leave" ) {
+                        document.getElementById('d2error').innerHTML = "*" + value1 + " Can't Be More Than 15 Days"
+                        document.getElementById('d2error').style.color = "red"
+                        document.getElementById('d2').focus()
+                        return false;
+
+                    } else if( value1 == "Adoption Leave" && days > aleave) {
+                        document.getElementById('d2error').innerHTML = "*Insufficient " + value1 + "  available"
+                        document.getElementById('d2error').style.color = "red"
+                        document.getElementById('d2').focus()
+                        return false;
+
+                    }else{
+                        document.getElementById('d2error').innerHTML = ""
+                    }
+                   
+                }
+                
                 $(function () {
                     var dtToday = new Date();
 
@@ -222,75 +393,6 @@
                     $('#d1').attr('min', minDate);
                     $('#d2').attr('min', minDate);
                 });
-            </script>
-
-            <script>
-
-                function calculateday() {
-
-                    var d1 = document.getElementById('d1').value;
-                    var d2 = document.getElementById('d2').value;
-
-                    var leave = document.getElementById('leave');
-                    var value1 = leave.value;
-                    var dateone = new Date(d1);
-                    var datetwo = new Date(d2);
-                    // datetwo.setDate(datetwo.getDate() + 1);
-                    var time = Math.abs(datetwo - dateone);
-                    var days = Math.ceil(time / (1000 * 60 * 60 * 24));
-                    var weeks = Math.floor(days / 7);
-                    days = days - (weeks * 2);
-                    var startDay = dateone.getDay();
-                    var endDay = datetwo.getDay();
-                    if (startDay - endDay > 1) {
-                        days = days - 2;
-                    }
-                    if (startDay == 0 && endDay != 6) {
-                        days = days - 1;
-                    }
-                    if (endDay == 6 && startDay != 0) {
-                        days = days - 1;
-                    }
-
-                    document.getElementById('output').value = days + 1;
-
-                    if (days > 7 && (value1 == "Sick Leave" || value1 == "Personal Leave" || value1 == "Casual Leave")) {
-                        document.getElementById('d2error').innerHTML = "*" + value1 + " Can't Be More Than 7 Days"
-                        document.getElementById('d2error').style.color = "red"
-                        document.getElementById('d2').focus()
-                        return false;
-
-                    }
-
-                    else if (days > 30 && (value1 == "Paternity Leave" || value1 == "Adoption Leave")) {
-                        document.getElementById('d2error').innerHTML = "*" + value1 + " " + "Can't Be More Than 30 Days"
-                        document.getElementById('d2error').style.color = "red"
-                        document.getElementById('d2').focus()
-                        return false;
-                    }
-
-                    else if (days > 180 && value1 == "Maternity Leave") {
-                        document.getElementById('d2error').innerHTML = "*" + value1 + " " + "Can't Be More Than 180 Days"
-                        document.getElementById('d2error').style.color = "red"
-                        document.getElementById('d2').focus()
-                        return false;
-                    }
-
-                    else if (days > 15 && value1 == "Marriage Leave") {
-                        document.getElementById('d2error').innerHTML = "*" + value1 + " " + "Can't Be More Than 15 Days"
-                        document.getElementById('d2error').style.color = "red"
-                        document.getElementById('d2').focus()
-                        return false;
-                    }
-
-
-
-
-                    else {
-                        document.getElementById('d2error').innerHTML = ""
-                    }
-                }
-
 
             </script>
 

@@ -21,38 +21,34 @@
 
         <body>
             <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
-                <div class="container-fluid">
+    <div class="container-fluid">
 
-                    <div class="col-8">
+      <div class="col-8">
 
-                        <img src="./imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-1"
-                            style="width: 13%;">
-                    </div>
-                    <div class="collapse navbar-collapse ms-5 text-end">
+        <img src="/imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-1" width="90" height="50">
+      </div>
+      
 
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                        <div class="dropdown ms-4">
-                            <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle"
-                                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="./imges/profilelogo.png" alt="hugenerd" width="30" height="30"
-                                    class="rounded-circle">
-                                <span class="d-none d-sm-inline mx-1">Profile</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                                <li><a class="dropdown-item" href="./ResetPassword.html">Reset Password</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Sign out</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </nav>
+        <span class="d-flex d-none d-sm-block ">
+          Welcome ${employee.username}
+        </span>
+        <div class="dropdown dropstart ">
+          <a href="#" class="d-flex   align-items-center text-dark text-decoration-none dropdown-toggle"
+            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/imges/profilelogo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+            <span class="d-none d-sm-inline mx-1">Profile</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small mt-5 ms-2 shadow">
+            <li><a class="dropdown-item" href="/ResetPassword.jsp">Reset Password</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </div>
+      
+    </div>
+  </nav>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 " style="background-color: rgba(0, 0, 0, 0.2);">
@@ -107,10 +103,10 @@
 
                         </div>
                     </div>
-                    <div class="col py-2">
+                   
 
-                        <div class="col-md-7 col-xl-9 col-8 mt-4 ms-5">
-                            <table id="table" class="table table-border table-hover mt-4">
+                        <div class="col-md-7 col-xl-9 col-8 mt-4 ms-5 table-responsive">
+                            <table id="table" class="table table-border table-hover mt-4 ">
                                 <tr>
                                     <th> ID</th>
                                     <th> Name</th>
@@ -119,7 +115,7 @@
                                     <th>Department</th>
                                     <th>Email ID</th>
                                     <th>Phone Number</th>
-                                    <th>Action</th>
+                                    
 
                                 </tr>
 
@@ -135,13 +131,7 @@
 
 
 
-                                        <td><a class="action-edit" href="edit?id=<c:out value='${employee.id }'/>"><i
-                                                    class="fa-solid fa-user-pen"></i></a>&nbsp;&nbsp; <a
-                                                    class="action-edit"
-                                                    href="delete?id=<c:out value='${employee.id }'/>"
-                                                    onclick="return check()"><i
-                                                        class="fa-solid fa-trash"></i></a>&nbsp;&nbsp;<a></td>
-
+                                       
 
 
 
@@ -152,7 +142,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            
             </div>
 
             <footer class="bg-light text-center text-lg-start ">

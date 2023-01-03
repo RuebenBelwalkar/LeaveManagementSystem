@@ -28,18 +28,27 @@ public class LeavesController {
 	public ModelAndView leaveApplication(Model model,Leaves leave) {
 		System.out.println("Welcome to leave application");
 		ModelAndView mv=new ModelAndView();
-		leave.setStatus("Pending");
-		System.out.println(leave);
-		lrep.save(leave);
-		mv.setViewName("ManagerApplyLeave");
-		Employee employee =erep.findById(leave.getEmpId());
-		mv.addObject("employee", employee);
-		String success="Leave applied Successfully";
-		mv.addObject("success", success);
-		System.out.println(leave);
-		leave.setStatus("Pending");
-		lrep.save(leave);
-		return mv;
+		boolean checkDuplicate=ls.checkManagerLeaveDuplicate(leave);
+		if(checkDuplicate==true) {
+			leave.setStatus("Pending");
+			System.out.println(leave);
+			lrep.save(leave);
+			mv.setViewName("ManagerApplyLeave");
+			Employee employee =erep.findById(leave.getEmpId());
+			mv.addObject("employee", employee);
+			String success="Leave applied Successfully";
+			mv.addObject("success", success);
+			System.out.println(leave);
+			return mv;
+		}else {
+			mv.setViewName("ManagerApplyLeave");
+			Employee employee =erep.findById(leave.getEmpId());
+			mv.addObject("employee", employee);
+			String duplicate="Already applied for this leave";
+			mv.addObject("duplicate", duplicate);
+			return mv;
+		}
+	
 		
 	}
 	
@@ -104,6 +113,22 @@ public class LeavesController {
 		leave.setStatus("Approved");
 		Employee manager= ls.empAccept(leave);
 		mv.addObject("employee", manager);
+		List<Leaves> leaves=lrep.findByManagerNameAndStatus(manager.getName(),"Pending");
+		mv.addObject("employees", manager);
+		mv.setViewName("ManagerManageLeave");
+		mv.addObject("leaves", leaves);
+		return mv;
+		
+	}
+	
+	@RequestMapping("/empreject")
+	public ModelAndView empReject(@RequestParam("lid") int id) {
+		System.out.println("Emp accept");
+		ModelAndView mv = new ModelAndView();
+		Leaves leave=lrep.findById(id);
+		leave.setStatus("Denied");
+		lrep.save(leave);
+		Employee manager=ls.empReject(leave);
 		List<Leaves> leaves=lrep.findByManagerNameAndStatus(manager.getName(),"Pending");
 		mv.addObject("employees", manager);
 		mv.setViewName("ManagerManageLeave");

@@ -35,38 +35,35 @@
         </head>
 
         <body>
-            <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
-                <div class="container-fluid">
+           <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
+    <div class="container-fluid">
 
-                    <div class="col-8">
+      <div class="col-8">
 
-                        <img src="/imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-2"
-                            style="width: 13%;">
-                    </div>
-                    <div class="collapse navbar-collapse ms-5 text-end">
+        <img src="/imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-1" width="90" height="50">
+      </div>
+      
 
-                        <form class="d-flex ">
-                            Welcome ${admin.name}
-                        </form>
-                        <div class="dropdown ms-4">
-                            <a href="#"
-                                class="d-flex  align-items-center text-dark text-decoration-none dropdown-toggle"
-                                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="/imges/profilelogo.png" alt="hugenerd" width="30" height="30"
-                                    class="rounded-circle">
-                                <span class="d-none d-sm-inline mx-1">Profile</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                                <li><a class="dropdown-item" href="./ResetPassword.html">Reset Password</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Sign out</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+        <span class="d-flex d-none d-sm-block ">
+          Welcome ${admin.username}
+        </span>
+        <div class="dropdown dropstart ">
+          <a href="#" class="d-flex   align-items-center text-dark text-decoration-none dropdown-toggle"
+            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/imges/profilelogo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+            <span class="d-none d-sm-inline mx-1">Profile</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small mt-5 ms-2 shadow">
+            <li><a class="dropdown-item" href="/ResetPassword.jsp">Reset Password</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </div>
+      
+    </div>
+  </nav>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 " style="background-color: rgba(0, 0, 0, 0.2);">
@@ -120,54 +117,38 @@
                         </div>
                     </div>
 
-                    <div class="col-md-7 col-xl-9 col-8 mt-3 ">
-                        <div class=" d-flex justify-content-center">
-
-                            <div class="card mt-5 p-5 ms-5 shadow">
-                                <h5 class="text-center mb-4">Add Holiday</h5>
-                                <form class="form-card p-3" onsubmit="return check()">
-                                    <div class="row justify-content-between text-left">
-
-                                    </div>
-                                    <div class="row justify-content-between text-left">
-
-                                    </div>
-                                    <!--From Date-->
-                                    <div class="row justify-content-between text-left">
-                                        <div class="form-group col-sm-6 flex-column d-flex"> <label
-                                                class="form-control-label px-3">From Date<span class="text-danger">
-                                                    *</span></label>
-                                            <input type="date" id="from" name="fromDate" placeholder="">
+                   <div class="col-md-9 col-xl-9 col-10">
+                                <div class="card mt-5 p-5 ms-2 shadow">
+                                <h3 class="mb-4 ">Add Holiday</h3>
+                                <form class="form-card row " onsubmit="return check()">
+                                    
+                                    <div class="col-xl-6  col-md-6 col-12 mt-2">
+                                        <label class="form-label fw-bold ">From Date</label>  
+                                        <input type="date" id="from" name="fromDate" placeholder="" class="form-control border-top-0 border-start-0 border-end-0">
                                             <span id="fromerror">
+                                        
+                                      </div>
+                                      <div class="col-xl-6 col-md-6 col-12 mt-2">
+                                        <label class="form-label fw-bold ">From Date</label>
+                                        <input type="date" id="to" name="toDate" placeholder="" class="form-control border-top-0 border-start-0 border-end-0">
+                                        <span id="toerror"></span>
+                                      </div>
 
-                                            </span>
-                                        </div>
-                                        <!--To Date-->
-                                        <div class="form-group col-sm-6 flex-column d-flex"> <label
-                                                class="form-control-label px-3">To Date<span class="text-danger">
-                                                    *</span></label>
-                                            <input type="date" id="to" name="toDate" placeholder="">
-                                            <span id="toerror">
-
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="row justify-content-between text-left mt-3">
-                                        <div class="form-group col-12 flex-column d-flex"> <label
-                                                class="form-control-label px-3">Occassion<span class="text-danger">
-                                                    *</span></label>
-                                            <input type="text" id="ans" name="ans" placeholder="">
-                                        </div>
-                                    </div>
-                                    <div class="row ">
+                                        <div class="col-12 mt-3">
+                                            <div> <label class="form-label fw-bold ">Occassion</label></div>
+                                            <textarea type="text" id="ans" name="ans"  cols="60" rows="2"
+                                              class="form-control border-top-0 border-start-0 border-end-0"></textarea>
+                                            <span id="addresserror"></span>
+                                          </div>
+                            
+                                
+                                   
                                         <div class="form-group mt-3"> <button type="submit"
-                                                class="btn-block btn-primary w-50" onclick="check()">Add</button>
+                                                class="btn btn-primary " onclick="check()">Add</button>
                                         </div>
-                                    </div>
+                                  
                                 </form>
-                            </div>
-
-                        </div>
+                            </div>                       
                     </div>
                 </div>
             </div>

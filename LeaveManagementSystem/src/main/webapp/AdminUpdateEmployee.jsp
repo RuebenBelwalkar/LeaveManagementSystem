@@ -20,35 +20,35 @@
     </head>
 
     <body>
-      <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
-        <div class="container-fluid">
+     <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
+    <div class="container-fluid">
 
-          <div class="col-8">
+      <div class="col-8">
 
-            <img src="./imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-1" style="width: 13%;">
-          </div>
-          <div class="collapse navbar-collapse ms-5 text-end">
+        <img src="/imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-1" width="90" height="50">
+      </div>
+      
 
-            <form class="d-flex ">
-              Welcome ${admin.name}
-            </form>
-            <div class="dropdown ms-4">
-              <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle"
-                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="./imges/profilelogo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                <span class="d-none d-sm-inline mx-1">Profile</span>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                <li><a class="dropdown-item" href="./ResetPassword.html">Reset Password</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-              </ul>
-            </div>
-          </div>
+        <span class="d-flex d-none d-sm-block ">
+          Welcome ${admin.username}
+        </span>
+        <div class="dropdown dropstart ">
+          <a href="#" class="d-flex   align-items-center text-dark text-decoration-none dropdown-toggle"
+            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/imges/profilelogo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+            <span class="d-none d-sm-inline mx-1">Profile</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small mt-5 ms-2 shadow">
+            <li><a class="dropdown-item" href="/ResetPassword.jsp">Reset Password</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
         </div>
-      </nav>
+      
+    </div>
+  </nav>
       <div class="container-fluid ">
 
         <div class="row">
@@ -147,7 +147,7 @@
               <div class="col-xl-6 col-md-6 col-12 mt-3">
                 <label class="form-label fw-bold ">Designation</label>
                 <select name="designation"  id="designation" class="form-select border-top-0 border-start-0 border-end-0"
-                  sreadonly="">
+                  >
                   <option selected  value="${employee.designation }">${employee.designation }</option>
                   <option value="Trainee">Trainee </option>
                   <option value="Associate">Associate</option>
@@ -217,17 +217,17 @@
                   class="form-control border-top-0 border-start-0 border-end-0">${employee.address }</textarea>
                 <span id="addresserror"></span>
               </div>
-				 <input type="text" name="status" value="${employee.status }">
-				<input type="text" name="password" value="${employee.password }">
-				<input type="text" name="sickLeave" value="${employee.sickLeave }">
-				<input type="text" name="casualLeave" value="${employee.casualLeave }">
-				<input type="text" name="personalLeave" value="${employee.personalLeave }">
-				<input type="text" name="maternityLeave" value="${employee.maternityLeave }">
-				<input type="text" name="paternityLeave" value="${employee.paternityLeave }">
-				<input type="text" name="marriageLeave" value="${employee.marriageLeave }">
-				 <input type="text" name="adoptionLeave" value="${employee.adoptionLeave }">
- 				<input type="text" name="employee.admin.id" value="${employee.admin.id }"> 
- 					<input type="text" name="joiningDate" value="${employee.joiningDate }">
+				 <input type="hidden" name="status" value="${employee.status }">
+				<input type="hidden" name="password" value="${employee.password }">
+				<input type="hidden" name="sickLeave" value="${employee.sickLeave }">
+				<input type="hidden" name="casualLeave" value="${employee.casualLeave }">
+				<input type="hidden" name="personalLeave" value="${employee.personalLeave }">
+				<input type="hidden" name="maternityLeave" value="${employee.maternityLeave }">
+				<input type="hidden" name="paternityLeave" value="${employee.paternityLeave }">
+				<input type="hidden" name="marriageLeave" value="${employee.marriageLeave }">
+				 <input type="hidden" name="adoptionLeave" value="${employee.adoptionLeave }">
+ 				<input type="hidden" name="employee.admin.id" value="${employee.admin.id }"> 
+ 					<input type="hidden" name="joiningDate" value="${employee.joiningDate }">
 
               <div class="col-12 mt-4 mb-4 text-center">
                 <button type="submit"  class="btn btn-primary  fw-bold  w-50">Submit</button>

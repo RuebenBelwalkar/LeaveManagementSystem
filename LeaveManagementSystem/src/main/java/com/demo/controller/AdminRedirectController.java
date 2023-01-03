@@ -84,7 +84,10 @@ public class AdminRedirectController {
 		System.out.println(id);
 		Admin admin = arep.findById(id);
 		List<Leaves> leaves = lrep.findByEmpDesignationAndStatus("Manager","Pending");
+		List<Leaves> rest=lrep.findByEmpDesignationAndStatusNot("Manager", "Pending");
+		System.out.println(rest);
 		mv.addObject("leaves", leaves);
+		mv.addObject("rest", rest);
 		mv.setViewName("AdminManageLeave");
 		mv.addObject("admin", admin);
 		return mv;
@@ -94,7 +97,7 @@ public class AdminRedirectController {
 		ModelAndView mv =new ModelAndView();
 		System.out.println(id);
 		Admin admin = arep.findById(id);
-		List<Employee> employee=erep.findByDesignation("Manager");
+		List<Employee> employee=erep.findBystatus("Active");
 		mv.addObject("employees", employee);
 		mv.setViewName("AdminViewEmployee");
 		mv.addObject("admin", admin);	

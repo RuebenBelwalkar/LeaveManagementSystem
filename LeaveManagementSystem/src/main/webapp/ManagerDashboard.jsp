@@ -21,37 +21,34 @@
 
         <body>
             <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
-                <div class="container-fluid">
+    <div class="container-fluid">
 
-                    <div class="col-8">
+      <div class="col-8">
 
-                        <img src="./imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-1"
-                            style="width: 13%;">
-                    </div>
-                    <div class="collapse navbar-collapse ms-5 text-end">
+        <img src="/imges/LMS_Logo-removebg-preview.png" alt="" srcset="" class="ms-1" width="90" height="50">
+      </div>
+      
 
-                        <form class="d-flex ">
-                            Welcome ${employee.name}
-                        </form>
-                        <div class="dropdown ms-4">
-                            <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle"
-                                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="./imges/profilelogo.png" alt="hugenerd" width="30" height="30"
-                                    class="rounded-circle">
-                                <span class="d-none d-sm-inline mx-1">Profile</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                                <li><a class="dropdown-item" href="./ResetPassword.html">Reset Password</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Sign out</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </nav>
+        <span class="d-flex d-none d-sm-block ">
+          Welcome ${employee.username}
+        </span>
+        <div class="dropdown dropstart ">
+          <a href="#" class="d-flex   align-items-center text-dark text-decoration-none dropdown-toggle"
+            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/imges/profilelogo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+            <span class="d-none d-sm-inline mx-1">Profile</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small mt-5 ms-2 shadow">
+            <li><a class="dropdown-item" href="/ResetPassword.jsp">Reset Password</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </div>
+      
+    </div>
+  </nav>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 " style="background-color: rgba(0, 0, 0, 0.2);">
@@ -106,71 +103,113 @@
 
                         </div>
                     </div>
-                    <div class="col py-2">
-
-                        <div class="container rounded bg-white mt-5 mb-5">
-                            <div class="row">
-                                <div class="col-md-4 border-right">
-                                    <div class="d-flex flex-column align-items-center text-center p-3 py-4">
-                                        <img class="rounded-circle m-5" width="250px" src="./imges/profile2.jpeg"><span
-                                            class="font-weight-bold">${employee.designation}</span><span
-                                            class="text-black-100">${employee.email}</span><span></span>
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <div class="p-3 py-3">
-                                        <div class="d-flex justify-content-between align-items-center mb-5">
-                                            <h4 style="color: #554949; font-weight: 500; ">My Profile</h4>
-                                        </div>
-                                        <div class="col-md-12 col-12 mb-4">
-                                            <label for="Name" style="color: #a4a4a4; font-weight: 500;">Name :</label>
-                                            <span class="ms-3">${employee.name}</span>
-                                        </div>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-md-6 col-12 mb-4">
-                                                <label for="Id" style="color: #a4a4a4; font-weight: 500;">ID :</label>
-                                                <span class="ms-5">${employee.id}</span>
-                                            </div>
-                                            <div class="col-md-6 col-12 mb-4">
-                                                <label for="username" style="color: #a4a4a4; font-weight: 500;">Username
-                                                    :</label>
-                                                <span class="">${employee.username}</span>
-                                            </div>
-                                            <div class="col-md-6 col-12 mb-4">
-                                                <label for="gender" style="color: #a4a4a4; font-weight: 500;">Gender
-                                                    :</label>
-                                                <span class="ms-3">${employee.gender}</span>
-                                            </div>
-                                            <div class="col-md-6 col-12 mb-4">
-                                                <label for="dob" style="color: #a4a4a4; font-weight: 500;">DOB :</label>
-                                                <span class="ms-4"> ${employee.dob}</span>
-                                            </div>
-                                            <div class="col-md-6 mb-3">
-                                                <label for="mobile" style="color: #a4a4a4; font-weight: 500;">Mobile
-                                                    :</label>
-                                                <span class="ms-2">${employee.mobileNumber}</span>
-                                            </div>
-                                            <div class="col-md-6 mb-4">
-                                                <label for="email" style="color: #a4a4a4; font-weight: 500;">Email
-                                                    :</label>
-                                                <span class="ms-2">${employee.email}</span>
-                                            </div>
-                                            <div class="col-md-12 mb-4">
-                                                <label for="address" style="color: #a4a4a4; font-weight: 500;">Address
-                                                    :</label>
-                                                <span class="ms-3">${employee.address}</span>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<div class=" col-9 col-md-9 col-xl-9 mt-2 ms-3  ">
+                <div class="row ">
+                    <div class="col-lg-3 col-md-3 col-10">
+                        <img class="rounded-circle w-75 ms-4 mt-3"  src="/imges/userprofile.jpeg">
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-3 mt-5 ms-4">
+                        <span class="fw-bold"><h4>${employee.name}</h4></span>                     
+                        <span><h6>${employee.designation}</h6></span>
+                        <span class="">${employee.address}</span>
+                     </div>  
+                </div>
+                <hr>
+                <div class="row mt-4">
+                    <div class="col-lg-6 col-md-6 col-12 table-responsive">
+                        <table class="table ">
+                            <thead>
+                                <th colspan="2" class="p-2"  style=" background-color: #807c7c3d;">Personal Information</th>
+                            </thead>
+                            <tbody>
+                                <tr >
+                                    <td class="">
+                                        <label class="p-1">Email :</label> 
+                                    </td>
+                                    <td class="text-end">
+                                        <span class="ms-2">${employee.email}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td >
+                                        <label class="p-1">Mobile Number :</label>
+                                    </td>
+                                    <td class="text-end">
+                                        <span class="ms-2" >${employee.mobileNumber}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="p-1" >DOB :</label>
+                                    </td>
+                                    <td class="text-end">
+                                        <span class="ms-2">${employee.dob}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="p-1">Gender :</label>
+                                    </td>
+                                    <td class="text-end">
+                                        <span class="ms-2-1">${employee.gender}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="p-1">State :</label>
+                                    </td>
+                                    <td class="text-end">
+                                        <span class="ms-2-1">${employee.state}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12 table-responsive">
+                        <table class="table ">
+                            <thead>
+                                <th colspan="2" class="p-2"  style=" background-color: #807c7c3d;">Employment Information</th>
+                            </thead>
+                            <tbody>
+                                <tr >
+                                    <td>
+                                        <label class="p-1">Employee ID :</label> 
+                                    </td>
+                                    <td class="text-end">
+                                        <span class="ms-2">${employee.id}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td >
+                                        <label class="p-1">UserName :</label>
+                                    </td>
+                                    <td class="text-end">
+                                        <span class="ms-2" >${employee.username}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="p-1">Department :</label>
+                                    </td>
+                                    <td class="text-end">
+                                        <span class="ms-2-1">${employee.department}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="p-1" >Date Hired :</label>
+                                    </td>
+                                    <td class="text-end">
+                                        <span class="ms-2">${employee.joiningDate}</span>
+                                    </td>
+                                </tr>
+                              
+                                
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            </div>
+            </div>            
             </div>
 
             <footer class="bg-light text-center text-lg-start ">
