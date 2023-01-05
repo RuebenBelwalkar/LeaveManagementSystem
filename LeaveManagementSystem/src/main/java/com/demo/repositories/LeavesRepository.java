@@ -12,6 +12,7 @@ public interface LeavesRepository extends JpaRepository<Leaves, Integer> {
 	Leaves findById(int id);
 	List<Leaves> findByEmpDesignationAndStatus(String empDesignation,String status);
 	List<Leaves> findByManagerNameAndStatus(String managerName,String status);
+	List<Leaves> findByManagerNameAndStatusNot(String managerName,String status);
 	
 	List<Leaves> findByEmpDesignationAndStatusNot(String managerName,String status);
 	List<Leaves> findByEmpIdAndStartDate(int id,String startDate);

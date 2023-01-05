@@ -12,10 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.demo.model.Admin;
 import com.demo.model.Employee;
+import com.demo.model.Holiday;
 import com.demo.repositories.AdminRepository;
 import com.demo.repositories.EmployeeRepository;
 import com.demo.repositories.HolidayRepository;
 import com.demo.service.AdminService;
+import com.demo.service.EmailService;
 import com.demo.service.ManagerService;
 
 @Controller
@@ -30,6 +32,8 @@ public class AdminController {
 	HolidayRepository hrep;
 	@Autowired
 	AdminRepository arep;
+	@Autowired
+	EmailService mail;
 	
 	@RequestMapping("/addEmployee")
 	public ModelAndView add(Model model ,Employee employee,@RequestParam("aid")int id) {
@@ -57,7 +61,7 @@ public class AdminController {
 			emp.setAdmin(admin);
 		
 		erep.save(emp);
-		
+		mail.sendEmail(emp.getUsername(), emp.getPassword(), emp.getEmail());
 		mv.setViewName("AdminAddEmployee");
 		List<Employee> employees =erep.findByStatusAndDepartment("Active",emp.getDepartment());
 		mv.addObject("employee", employees);
@@ -104,5 +108,32 @@ public class AdminController {
 		return mv;
 	}
 	
+	
+	@RequestMapping("/addHoliday")
+	public ModelAndView addHoliday(Holiday holiday,@RequestParam("aid")int id) {
+		System.out.println(holiday);
+		Admin admin=arep.findById(id);
+		System.out.println(admin);
+		
+		ModelAndView mv=new ModelAndView();
+		boolean checkDuplicate=as.checkDuplicateHoliday(holiday);
+		if(checkDuplicate==false) {
+			mv.addObject("admin", admin);
+			mv.setViewName("AdminAddHoliday");
+			String success="Holiday Added Successfully";
+			mv.addObject("success", success);
+			hrep.save(holiday);
+			return mv;
+		}else {
+			mv.addObject("admin", admin);
+			mv.setViewName("AdminAddHoliday");
+			String duplicate="Holiday already added";
+			mv.addObject("duplicate", duplicate);
+			
+			return mv;
+		}
+		
+		
+	}
 	
 	}

@@ -7,8 +7,10 @@ import org.springframework.stereotype.Component;
 
 import com.demo.model.Admin;
 import com.demo.model.Employee;
+import com.demo.model.Holiday;
 import com.demo.model.Leaves;
 import com.demo.repositories.EmployeeRepository;
+import com.demo.repositories.HolidayRepository;
 import com.demo.repositories.LeavesRepository;
 @Component
 public class LeaveService {
@@ -16,6 +18,8 @@ public class LeaveService {
 		EmployeeRepository erep;
 		@Autowired
 		LeavesRepository lrep;
+		@Autowired
+		HolidayRepository hrep;
 	
 	public Admin accept(Leaves leave) {
 		int empid=leave.getEmpId();
@@ -85,7 +89,7 @@ public class LeaveService {
 	}
 	
 	
-	public boolean checkManagerLeaveDuplicate(Leaves leave) {
+	public boolean checkEmployeeLeaveDuplicate(Leaves leave) {
 		List<Leaves> startDate=lrep.findByEmpIdAndStartDate(leave.getEmpId(), leave.getStartDate());
 		List<Leaves> endDate=lrep.findByEmpIdAndEndDate(leave.getEmpId(), leave.getEndDate());
 		List<Leaves> both=lrep.findByEmpIdAndStartDateAndEndDate(leave.getEmpId(), leave.getStartDate(), leave.getEndDate());
@@ -94,5 +98,15 @@ public class LeaveService {
 		}else {
 			return false;
 		}
+	}
+	
+	public boolean checkHoliday(Leaves leave) {
+		List<Holiday> holiday=hrep.findByFromDateOrToDate(leave.getStartDate(),leave.getEndDate());
+		if(holiday.isEmpty()) {
+			return true;
+		}else {
+			return false;
+		}
+		
 	}
 }

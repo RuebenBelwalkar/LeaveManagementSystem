@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8" >
     <meta name="viewport" content="width-device-width, initial-scale=1.0">
-    <title>Leave Management</title>
+    <title>Employee Reset</title>
 </head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css'>
@@ -11,8 +11,17 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+ <style>
+    .body{
+    		background-color: rgb(0, 0, 0, 0.2);
+    		 background-size: 100% 120%;
+    		}
+    		</style>
 
-<body style="background-color: rgb(0, 0, 0, 0.2); background-size: 100% 120%;">
+<body>
+<% if (session.getAttribute("username")==null){
+	response.sendRedirect("login.jsp");
+} %>
     <div class="container py-4" style="margin-top: 4%;">
         <div class="row justify-content-center">
             
@@ -21,7 +30,7 @@
                     <div class="card-body">
                         <h4 class="card-title" style="text-align: center;">RESET PASSWORD</h4>
                     </div>
-                    <form action='#' onsubmit= "return validation()" method="post">
+                    <form action='employeereset' onsubmit= "return validation()" method="post">
                         <div class = "form-group">
                             <div class = "form-group" >
                                 <label for ="oldPassword"> Old Password<span style="color: red;">&#42;</span> </label>
@@ -29,10 +38,10 @@
                                 <i class="far fa-eye" id="OldPassword" style="margin-left: -30px; cursor: pointer;"></i>                                                                
                     
                             </div>
-                            
+                             <span class="text-danger">${wrongPassword }</span>
                             <div class="form-group mt-3">
                                 <label class="form-label fw-bold">New Password<span style="color: red;">&#42;</span></label>
-                                <input type="password" style="width: 90%; border: 0; outline: 0; border-bottom: 2px solid #474747;" autocomplete="current-password" required="" id="new_password">
+                                <input type="password" style="width: 90%; border: 0; outline: 0; border-bottom: 2px solid #474747;" name="newPassword" autocomplete="current-password" required="" id="new_password">
                                 <i class="far fa-eye" id="newpassword" style="margin-left: -30px; cursor: pointer;"></i>
                                     <span id="newpass" class="text-danger font-weight-bold"></span>
                                     
@@ -47,7 +56,7 @@
                                     <span id="cnfrmpass" class="text-danger font-weight-bold"></span>
                                     
                             </div>
-                            
+                             <input type="hidden" name="id" value="${employee.id }">
                         <div class="form-group mt-5">
                             <div class="row">
                                 <div class="col-sm-7 col-sm-offset-0">

@@ -22,6 +22,9 @@
         </head>
 
         <body>
+        <% if (session.getAttribute("username")==null){
+	response.sendRedirect("login.jsp");
+} %>
           <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
     <div class="container-fluid">
 
@@ -41,11 +44,11 @@
             <span class="d-none d-sm-inline mx-1">Profile</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-dark text-small mt-5 ms-2 shadow">
-            <li><a class="dropdown-item" href="/ResetPassword.jsp">Reset Password</a></li>
+            <li><a class="dropdown-item" href="EmployeeResetPassword?id=<c:out value="${employee.id }"/>">Reset Password</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
+            <li><a class="dropdown-item" href="logout?id=<c:out value=" ${employee.id }" />">Sign out</a></li>
           </ul>
         </div>
       
@@ -101,6 +104,12 @@
                                 <i class="fa-solid fa-chart-gantt"></i>
                                 <span class="ms-2 d-none d-sm-inline text-dark">Leave Tracker</span></a>
                         </li>
+                         <li>
+                                    <a href="ManagerViewHoliday?id=<c:out value=" ${employee.id }" />" class="nav-link
+                                    px-0 mt-2 align-middle">
+                                    <i class="fa-solid fa-mug-hot"></i>
+                                    <span class="ms-2 d-none d-sm-inline text-dark">Holidays</span></a>
+                                </li>
                             </ul>
                             <hr>
 
@@ -140,7 +149,7 @@
                                         <input type="date" class="form-control border-top-0 border-start-0 border-end-0"
                                             id="d1" name="startDate"  />
 
-                                        <Span id="d1error"></Span>
+                                        <Span id="d1error" class="text-danger"></Span>
                                     </div>
 
                                     <!-- End Input Date -->
@@ -148,7 +157,7 @@
                                         <label class="form-label fw-bold">End Date</label>
                                         <input type="date" class="form-control border-top-0 border-start-0 border-end-0"
                                             id="d2" name="endDate" onchange=" return calculateday()"  />
-                                        <Span id="d2error"></Span>
+                                        <Span id="d2error" class="text-danger"></Span>
                                     </div>
 
                                 </div>
@@ -165,12 +174,12 @@
                                         <select class="form-select" id="leave" name="leaveType" required>
                                             <option value="" disabled hidden selected>Choose LeaveType</option>
                                             <option id="sl" value="Sick Leave" data-bs-toggle="tooltip" data-bs-placement="top" title="Available ${employee.sickLeave }">Sick Leave</option>
-                                            <option id="pl" value="Personal Leave" data-bs-toggle="tooltip" data-bs-placement="top" title="${employee.personalLeave }">Personal Leave</option>
-                                            <option id="cl" value="Casual Leave"  data-bs-toggle="tooltip" data-bs-placement="top" title="${employee.casualLeave }">Casual Leave</option>
-                                            <option id="ml" value="Maternity Leave" data-bs-toggle="tooltip" data-bs-placement="top" title="${employee.maternityLeave }">Maternity Leave</option>
-                                            <option id="ptl" value="Paternity Leave"  data-bs-toggle="tooltip" data-bs-placement="top" title="${employee.paternityLeave }">Paternity Leave</option>
-                                            <option id="mrl" value="Marriage Leave"  data-bs-toggle="tooltip" data-bs-placement="top" title="${employee.marriageLeave }">Marriage Leave</option>
-                                            <option id="al" value="Adoption Leave"  data-bs-toggle="tooltip" data-bs-placement="top" title="${employee.adoptionLeave }">Adoption Leave</option>
+                                            <option id="pl" value="Personal Leave" data-bs-toggle="tooltip" data-bs-placement="top" title="Available ${employee.personalLeave }">Personal Leave</option>
+                                            <option id="cl" value="Casual Leave"  data-bs-toggle="tooltip" data-bs-placement="top" title="Available ${employee.casualLeave }">Casual Leave</option>
+                                            <option id="ml" value="Maternity Leave" data-bs-toggle="tooltip" data-bs-placement="top" title="Available ${employee.maternityLeave }">Maternity Leave</option>
+                                            <option id="ptl" value="Paternity Leave"  data-bs-toggle="tooltip" data-bs-placement="top" title="Available ${employee.paternityLeave }">Paternity Leave</option>
+                                            <option id="mrl" value="Marriage Leave"  data-bs-toggle="tooltip" data-bs-placement="top" title="Available ${employee.marriageLeave }">Marriage Leave</option>
+                                            <option id="al" value="Adoption Leave"  data-bs-toggle="tooltip" data-bs-placement="top" title="Available ${employee.adoptionLeave }">Adoption Leave</option>
 
                                         </select>
 
@@ -212,8 +221,12 @@
               if([6,0].includes(day)){
                 e.preventDefault();
                 this.value = '';
-                alert('Weekends not allowed');
-              }
+document.getElementById('d1error').innerHTML="*Weekends not allowed";
+                
+              }else{
+            		document.getElementById('d1error').innerHTML="";
+            	  
+              }     
             });
 
             const picker2 = document.getElementById('d2');
@@ -222,7 +235,11 @@
               if([6,0].includes(day2)){
                 e2.preventDefault();
                 this.value = '';
-                alert('Weekends not allowed');
+document.getElementById('d2error').innerHTML="*Weekends not allowed";
+                
+              }else{
+            		document.getElementById('d2error').innerHTML="";
+            	  
               }
             });
 

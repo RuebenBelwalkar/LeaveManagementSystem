@@ -19,9 +19,6 @@
 </head>
 
 <body>
-<% if (session.getAttribute("username")==null){
-	response.sendRedirect("login.jsp");
-} %>
    <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
     <div class="container-fluid">
 
@@ -45,7 +42,7 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="logout?id=<c:out value=" ${admin.id }" />">Sign out</a></li>
+            <li><a class="dropdown-item"  href="logout?id=<c:out value=" ${admin.id }" />">Sign out</a></li>
           </ul>
         </div>
       
@@ -69,9 +66,9 @@
                         </li>
 
                         <li>
-                            <a href="" class="nav-link px-0 mt-2 align-middle">
+                            <a href="AdminViewEmployee?id=<c:out value="${admin.id }"/>" class="nav-link px-0 mt-2 align-middle">
                                 <i class="fa-solid fa-users"></i> <span
-                                    class="ms-1 d-none d-sm-inline text-primary">View
+                                    class="ms-1 d-none d-sm-inline text-dark">View
                                     Employees</span></a>
                         </li>
                         <li>
@@ -97,11 +94,11 @@
                                 <i class="fa-solid fa-folder-plus"></i> <span
                                     class="ms-2 d-none d-sm-inline text-dark">Add Project</span></a>
                         </li>
-                         <li>
+                        <li>
                             <a href="AdminViewHoliday?id=<c:out value=" ${admin.id }" />" class="nav-link
                             px-0 mt-2 align-middle">
                             <i class="fa-solid fa-mug-hot"></i>
-                            <span class="ms-2 d-none d-sm-inline text-dark">Holidays</span></a>
+                            <span class="ms-2 d-none d-sm-inline text-primary">Holidays</span></a>
                         </li>
                     </ul>
                     <hr>
@@ -110,36 +107,21 @@
             </div>
 
             <div class="col-md-7 col-xl-9 col-8 mt-4 ms-5 table-responsive">
-                <table id="table" class="table table-border table-hover mt-4">
+                <table id="table" class="table table-border table-hover mt-4 ">
+                <thead><th class="fw-bold" ><h4>Holidays</h4></th></thead>
                     <tr>
-                        <th> ID</th>
-                        <th> Name</th>
-                        <th> Username</th>
-                        <th>Designation</th>
-                        <th>Department</th>
-                        <th>Email ID</th>
-                        <th>Phone Number</th>
-                        <th>Action</th>
-
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Occasion</th>
+                        
                     </tr>
 
-                    <c:forEach items="${employees }" var="emp">
+                    <c:forEach items="${holiday}" var="holiday">
                         <tr>
-                            <td>${emp.id}</td>
-                            <td>${emp.name}</td>
-                            <td>${emp.username}</td>
-                            <td>${emp.designation}</td>
-                            <td>${emp.department}</td>
-                            <td>${emp.email}</td>
-                            <td>${emp.mobileNumber }</td>
-
-
-
-                            <td><a class="action-edit" href="AdminUpdateEmployee?id=<c:out value="${emp.id }"/>"><i
-                                        class="fa-solid fa-user-pen"></i></a>&nbsp;&nbsp; <a class="action-edit"
-                                        href="AdminDeleteEmployee?id=<c:out value='${emp.id }'/>" onclick="return check()"><i
-                                            class="fa-solid fa-trash"></i></a>&nbsp;&nbsp;<a></td>
-
+                            <td>${holiday.fromDate}</td>
+                            <td>${holiday.toDate}</td>
+                            <td>${holiday.occasion}</td>
+                            
                         </tr>
                     </c:forEach>
                 </table>
@@ -149,13 +131,12 @@
         </div>
     </div>
 
-    </div>
-    </div>
+
 
 
     <footer class="bg-light text-lg-start ">
         <div class=" p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2022 Copyright: Leave Management System By TEAM NO-4
+            ï¿½ 2022 Copyright: Leave Management System By TEAM NO-4
         </div>
     </footer>
 

@@ -10,9 +10,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.demo.model.Admin;
 import com.demo.model.Employee;
+import com.demo.model.Holiday;
 import com.demo.model.Leaves;
 import com.demo.repositories.AdminRepository;
 import com.demo.repositories.EmployeeRepository;
+import com.demo.repositories.HolidayRepository;
 import com.demo.repositories.LeavesRepository;
 
 @Controller
@@ -23,6 +25,8 @@ public class AdminRedirectController {
 	AdminRepository arep;
 	@Autowired
 	LeavesRepository lrep;
+	@Autowired
+	HolidayRepository hrep;
 	
 	@RequestMapping("/AdminAddEmployee")
 	public ModelAndView rAdd(@RequestParam("id") int id) {
@@ -111,6 +115,18 @@ public class AdminRedirectController {
 		Employee employee = erep.findById(id);
 		mv.setViewName("AdminUpdateEmployee");
 		mv.addObject("employee", employee);	
+		return mv;
+	}
+	
+	@RequestMapping("/AdminViewHoliday")
+	public ModelAndView adminViewHoliday(@RequestParam("id") int id) {
+		ModelAndView mv =new ModelAndView();
+		System.out.println(id);
+		Admin admin = arep.findById(id);
+		List<Holiday> holiday=hrep.findAll();
+		mv.addObject("holiday", holiday);
+		mv.setViewName("AdminViewHoliday");
+		mv.addObject("admin", admin);
 		return mv;
 	}
 	

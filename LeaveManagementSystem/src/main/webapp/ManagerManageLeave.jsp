@@ -20,6 +20,9 @@
         </head>
 
         <body>
+        <% if (session.getAttribute("username")==null){
+	response.sendRedirect("login.jsp");
+} %>
     <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
     <div class="container-fluid">
 
@@ -39,11 +42,11 @@
             <span class="d-none d-sm-inline mx-1">Profile</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-dark text-small mt-5 ms-2 shadow">
-            <li><a class="dropdown-item" href="/ResetPassword.jsp">Reset Password</a></li>
+            <li><a class="dropdown-item" href="EmployeeResetPassword?id=<c:out value="${employee.id }"/>">Reset Password</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
+            <li><a class="dropdown-item" href="logout?id=<c:out value=" ${employee.id }" />">Sign out</a></li>
           </ul>
         </div>
       
@@ -98,6 +101,12 @@
                                 <i class="fa-solid fa-chart-gantt"></i>
                                 <span class="ms-2 d-none d-sm-inline text-dark">Leave Tracker</span></a>
                         </li>
+                         <li>
+                                    <a href="ManagerViewHoliday?id=<c:out value=" ${employee.id }" />" class="nav-link
+                                    px-0 mt-2 align-middle">
+                                    <i class="fa-solid fa-mug-hot"></i>
+                                    <span class="ms-2 d-none d-sm-inline text-dark">Holidays</span></a>
+                                </li>
                             </ul>
                             <hr>
 
@@ -106,7 +115,9 @@
                    
 
                         <div class="col-md-7 col-xl-9 col-8 mt-4 ms-3 table-responsive">
+                          
                             <table id="table" class="table table-border table-hover mt-4 ms-3">
+                             <thead><th class="fw-bold" colspan="2"><h4>Pending Leaves</h4></th></thead>
                                 <tr>
                                      <th>Leave ID</th>
                                    <th>Employee ID</th>
@@ -148,6 +159,48 @@
                                 </tr>
                             </c:forEach>
                             </table>
+                            
+                            
+                               <table id="table" class="table table-border table-hover mt-4 ms-3">
+                         <thead><th class="fw-bold" colspan="2"><h4>Leave History</h4></th></thead>
+                            <tr>
+                            
+                                <th>Leave ID</th>
+                                   <th>Employee ID</th>
+                                <th> Name</th>
+                                <th> From</th>
+                                <th>To</th>
+                                 <th>Days</th>
+                                <th>Leave Type</th>
+                                 <th>Reason</th>
+                                <th>Status</th>
+
+                            </tr>
+
+                            <c:forEach items="${rest}" var="leave">
+                                <tr>
+                                    <td>${leave.lid}</td>
+                                    <td>${leave.empId}</td>
+                                    <td>${leave.empName}</td>
+                                    <td>${leave.startDate}</td>
+                                    <td>${leave.endDate}</td>
+                                      <td>${leave.days}</td>
+                                        <td>${leave.leaveType}</td>
+                                          <td>${leave.reason}</td>
+                                           <td>${leave.status}</td>
+
+
+
+
+                                   
+
+
+
+
+
+                                </tr>
+                            </c:forEach>
+                        </table>
                         </div>
                     </div>
                 </div> 

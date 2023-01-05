@@ -7,13 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.demo.model.Employee;
-
+import com.demo.model.Holiday;
 import com.demo.repositories.EmployeeRepository;
+import com.demo.repositories.HolidayRepository;
 
 @Component
 public class AdminService {
 	@Autowired
 	EmployeeRepository erep;
+	@Autowired
+	HolidayRepository hrep;
 	public Employee add(Employee employee) {
 		
 		employee.setAdoptionLeave(30);
@@ -50,4 +53,16 @@ public class AdminService {
 			return false;
 		}
 	}
+	
+	public boolean checkDuplicateHoliday(Holiday holiday) {
+		List<Holiday> start = hrep.findByFromDate(holiday.getFromDate());
+		List<Holiday> end = hrep.findByToDate(holiday.getToDate());
+		List<Holiday> both = hrep.findByFromDateAndToDate(holiday.getFromDate(), holiday.getToDate());
+		if(start.isEmpty() && end.isEmpty() && both.isEmpty()) {
+			return false;
+			
+		}else {
+			return true;
+		}
+ 	}
 }

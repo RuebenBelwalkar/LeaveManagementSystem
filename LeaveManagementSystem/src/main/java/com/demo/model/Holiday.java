@@ -2,8 +2,7 @@ package com.demo.model;
 
 
 
-import java.sql.Date;
-import java.time.LocalDate;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,25 +18,27 @@ public class Holiday {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int hid;
-	private Date dates;
+	private String fromDate;
+	private String toDate;
 	private String occasion;
-	
-	
-
-	public Holiday(String occasion, Date date) {
-		super();
-		
-		this.dates = date;
-		this.occasion = occasion;
+	public int getHid() {
+		return hid;
 	}
-	public Date getDate() {
-		return dates;
+	public void setHid(int hid) {
+		this.hid = hid;
 	}
-	public void setDate(Date date) {
-		this.dates = date;
+	public String getFromDate() {
+		return fromDate;
 	}
-	
-
+	public void setFromDate(String fromDate) {
+		this.fromDate = fromDate;
+	}
+	public String getToDate() {
+		return toDate;
+	}
+	public void setToDate(String toDate) {
+		this.toDate = toDate;
+	}
 	public String getOccasion() {
 		return occasion;
 	}
@@ -46,7 +47,10 @@ public class Holiday {
 	}
 	@Override
 	public String toString() {
-		return "Holidays [ date=" + dates + ", occasion=" + occasion + "]";
+		return "Holiday [hid=" + hid + ", fromDate=" + fromDate + ", toDate=" + toDate + ", occasion=" + occasion + "]";
 	}
+	
+	
+
 	
 }

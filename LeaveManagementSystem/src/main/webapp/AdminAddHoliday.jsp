@@ -35,6 +35,9 @@
         </head>
 
         <body>
+        <% if (session.getAttribute("username")==null){
+	response.sendRedirect("login.jsp");
+} %>
            <nav class="navbar navbar-expand-lg" style="background-color: rgba(0, 0, 0, 0.2);">
     <div class="container-fluid">
 
@@ -54,11 +57,11 @@
             <span class="d-none d-sm-inline mx-1">Profile</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-dark text-small mt-5 ms-2 shadow">
-            <li><a class="dropdown-item" href="/ResetPassword.jsp">Reset Password</a></li>
+            <li><a class="dropdown-item"  href="AdminResetPassword?id=<c:out value="${admin.id }"/>">Reset Password</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
+            <li><a class="dropdown-item"  href="logout?id=<c:out value=" ${admin.id }" />">Sign out</a></li>
           </ul>
         </div>
       
@@ -83,7 +86,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="AdmiViewEmployee?id=<c:out value="${admin.id }"/>" class="nav-link px-0 mt-2 align-middle">
+                                    <a href="AdminViewEmployee?id=<c:out value="${admin.id }"/>" class="nav-link px-0 mt-2 align-middle">
                                         <i class="fa-solid fa-users"></i> <span
                                             class="ms-1 d-none d-sm-inline text-dark">View
                                             Employees</span></a>
@@ -113,42 +116,63 @@
                                         <i class="fa-solid fa-folder-plus"></i> <span
                                             class="ms-2 d-none d-sm-inline text-dark">Add Project</span></a>
                                 </li>
+                                 <li>
+                            <a href="AdminViewHoliday?id=<c:out value=" ${admin.id }" />" class="nav-link
+                            px-0 mt-2 align-middle">
+                            <i class="fa-solid fa-mug-hot"></i>
+                            <span class="ms-2 d-none d-sm-inline text-dark">Holidays</span></a>
+                        </li>
                             </ul>
                         </div>
                     </div>
 
                    <div class="col-md-9 col-xl-9 col-10">
                                 <div class="card mt-5 p-5 ms-2 shadow">
+                                 <span class="text-success"><h3>${success}</h3></span>
+                                 <span class="text-danger"><h3>${duplicate}</h3></span>
                                 <h3 class="mb-4 ">Add Holiday</h3>
-                                <form class="form-card row " onsubmit="return check()">
+                                <form class="form-card row " action="addHoliday" onsubmit="return check()">
                                     
                                     <div class="col-xl-6  col-md-6 col-12 mt-2">
                                         <label class="form-label fw-bold ">From Date</label>  
                                         <input type="date" id="from" name="fromDate" placeholder="" class="form-control border-top-0 border-start-0 border-end-0">
-                                            <span id="fromerror">
+                                            <span id="fromerror" class="text-danger"></span>
                                         
                                       </div>
                                       <div class="col-xl-6 col-md-6 col-12 mt-2">
-                                        <label class="form-label fw-bold ">From Date</label>
+                                        <label class="form-label fw-bold ">To Date</label>
                                         <input type="date" id="to" name="toDate" placeholder="" class="form-control border-top-0 border-start-0 border-end-0">
-                                        <span id="toerror"></span>
+                                        <span id="toerror" class="text-danger"></span>
                                       </div>
 
                                         <div class="col-12 mt-3">
                                             <div> <label class="form-label fw-bold ">Occassion</label></div>
-                                            <textarea type="text" id="ans" name="ans"  cols="60" rows="2"
+                                            <textarea type="text" id="ans" name="occasion"  cols="60" rows="2"
                                               class="form-control border-top-0 border-start-0 border-end-0"></textarea>
                                             <span id="addresserror"></span>
                                           </div>
-                            
-                                
+                                          
+                            			
+                                <input type="hidden" name="aid" value="${admin.id }">
                                    
                                         <div class="form-group mt-3"> <button type="submit"
                                                 class="btn btn-primary " onclick="check()">Add</button>
                                         </div>
                                   
                                 </form>
-                            </div>                       
+                               <form>
+                               <h3 class="mb-4 ">Add Multiple Holiday</h3>
+                                <div class="input-group mb-3">
+ 
+  <input type="file" class="form-control" name="bulk" id="inputGroupFile01">
+	</div>
+	 <div class="form-group mt-3"> <button type="submit"
+                                                class="btn btn-primary " onclick="check()">Add</button>
+                                        </div>
+                                  
+                               </form>
+                            </div>  
+                                                 
                     </div>
                 </div>
             </div>
@@ -207,6 +231,35 @@
                     }
 
                 }
+                
+                const picker = document.getElementById('from');
+                picker.addEventListener('input', function(e){
+                  var day = new Date(this.value).getUTCDay();
+                  if([6,0].includes(day)){
+                    e.preventDefault();
+                    this.value = '';
+                	document.getElementById('fromerror').innerHTML="*Weekends not allowed";
+                    
+                  }else{
+                		document.getElementById('fromerror').innerHTML="";
+                	  
+                  }
+                  }
+                );
+
+                const picker2 = document.getElementById('to');
+                picker2.addEventListener('input', function(e2){
+                  var day2 = new Date(this.value).getUTCDay();
+                  if([6,0].includes(day2)){
+                    e2.preventDefault();
+                    this.value = '';
+                   	document.getElementById('toerror').innerHTML="*Weekends not allowed";
+                   
+                  }else{
+                		document.getElementById('toerror').innerHTML="";
+                	  
+                  }
+                });
 
             </script>
         </body>
